@@ -10,6 +10,20 @@
     <meta name="viewport" content="width=device-width" />
     <link href="~/stylesheet/StyleSheet1.css" rel="stylesheet" />
     <title>Ex02 : popup pub</title>
+    <script>
+        // gestion d'évènement pour éviter le onLoad dans la balise Body
+        // assure que le modèle DOM est chargé et prêt à être utiliser.
+        function loadScriptAfterDOMReady () {
+            var script = document.createElement('script');
+            script.src = "\\script\\js.js";
+            document.head.appendChild(script);
+
+            script.onload = function () { document.removeEventListener('DOMContentLoaded', loadScriptAfterDOMReady); };
+        }
+
+        document.addEventListener('DOMContentLoaded', loadScriptAfterDOMReady );
+
+    </script>
 </head>
 <body>
     <div id="lorem">
@@ -35,5 +49,5 @@
     </div>
 </body>
 </html>
-<script src="~/script/js.js"></script>
+<!-- <script src="~/script/js.js"></script>-->
 

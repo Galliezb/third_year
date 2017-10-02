@@ -1,4 +1,5 @@
-﻿var nbrSeconde = 10;
+﻿alert("loaded");
+var nbrSeconde = 10;
 document.getElementById("seconde").innerText = nbrSeconde;
 var inter = setInterval(intervalSeconde, 1000);
 setInterval(relancePopupPub, 30000);
