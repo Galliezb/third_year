@@ -1,0 +1,38 @@
+﻿body {
+    font-size:14px;
+    font-weight:bolder;
+}
+
+#Conteneur {
+    width: 300px;
+    height:100px;
+    margin: 50%;
+    position: absolute;
+    border: 1px solid black;
+}
+
+img {
+    display:inline-block;
+    margin : 0px 5px;
+    border : none;
+    width:20px;
+    height:20px;
+}
+
+.headForm{
+
+    text-align:center;
+
+
+}
+
+.formulaire {
+
+    width:100%;
+    text-align : right;
+
+}
+
+.formulaire input{
+    margin:5px;
+}
