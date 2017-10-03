@@ -27,12 +27,12 @@ function flashouille() {
 
         console.debug(i + " == 0 && couleur de i => " + couleur[i] + " soit = " + (i == 0 && couleur[i] < 9));
 
-        if (i == 0 && couleur[i] < 9) {
+        if (i == 0 && couleur[i] < 15) {
             couleur[0]++;
             //alert(couleur[0]);
-        } else if ( couleur[i] == 9 && couleur[i+1] < 9 ) {
+        } else if ( couleur[i] == 15 && couleur[i+1] < 15 ) {
             couleur[i+1]++;
-        } else if (couleur[5] == 9 ){
+        } else if (couleur[5] == 15 ){
             couleur = [0, 0, 0, 0, 0, 0];
         }
 

@@ -27,5 +27,14 @@
         <input type="button" value="Toggle" id="btStart" />
         <input type="button" value="Reset" id="btResetBackground" />
     </div>
+    <div id="monForm">
+        <form action="~/Views/Home/index.cshtml" enctype="multipart/form-data" method="get">
+            <label id="pseudo">Pseudonyme : <input name="pseudo" type="text" /></label>
+            <label id="passwd">Password : <input name="passwd" type="text" /></label>
+            <label id="bornDate">Date de naissance : <input name="bornDate" type="date" /></label>
+            <input type="button" value="Reset" id="resetForm" />
+            <input type="submit" value="Envoyer" />
+        </form>
+    </div>
 </body>
 </html>
