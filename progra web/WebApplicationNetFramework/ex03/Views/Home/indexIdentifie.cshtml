@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -27,14 +26,10 @@
         <input type="button" value="Toggle" id="btStart" />
         <input type="button" value="Reset" id="btResetBackground" />
     </div>
-    <div id="conteneurForm">
-        <form id="monForm" action="/home/GetSubmit" enctype="multipart/form-data" method="post">
-            <label id="pseudo">Pseudonyme : <input name="pseudo" type="text" value="@ViewBag.login" /></label>
-            <label id="passwd">Password : <input name="passwd" type="text" value="@ViewBag.passwd" /></label>
-            <label id="bornDate">Date de naissance : <input name="bornDate" type="date" value="@ViewBag.dt" /></label>
-            <input type="reset" value="Reset" id="resetForm" />
-            <input type="submit" value="Envoyer" />
-        </form>
+    <div id="monForm">
+        Bonjour @ViewBag.test1,
+        passwd @ViewBag.test2 accepté.
+        en date du @ViewBag.test3 :)
     </div>
 </body>
 </html>

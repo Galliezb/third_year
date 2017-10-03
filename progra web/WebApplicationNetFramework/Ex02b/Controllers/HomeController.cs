@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ex03.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace Ex02b.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            return View();         
         }
+
     }
 }

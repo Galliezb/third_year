@@ -66,19 +66,19 @@ h1{
     #menuTop a:hover {
         color: deepskyblue;
     }
-#monForm{
-    width:400px;
-    margin:auto;
-    margin-top:25px;
-    border:1px solid red;
+#conteneurForm {
+    width: 400px;
+    margin: auto;
+    margin-top: 25px;
+    border: 1px solid red;
 }
 
-#monForm label{
-    display:block;
-    text-align:right;
+#conteneurForm label {
+    display: block;
+    text-align: right;
 }
 
-#monForm label input{
-    margin:5px;
-    margin-left:15px;
+#conteneurForm label input {
+    margin: 5px;
+    margin-left: 15px;
 }
