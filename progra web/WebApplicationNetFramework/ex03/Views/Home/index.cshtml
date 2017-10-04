@@ -1,4 +1,9 @@
-﻿
+﻿@using ex03.Models;
+@model TraiteGet
+@{
+    Layout = null;
+}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,12 +33,18 @@
         <input type="button" value="Reset" id="btResetBackground" />
     </div>
     <div id="conteneurForm">
-        <form id="monForm" action="/home/GetSubmit" enctype="multipart/form-data" method="post">
-            <label id="pseudo">Pseudonyme : <input name="pseudo" type="text" value="@ViewBag.login" /></label>
-            <label id="passwd">Password : <input name="passwd" type="text" value="@ViewBag.passwd" /></label>
-            <label id="bornDate">Date de naissance : <input name="bornDate" type="date" value="@ViewBag.dt" /></label>
-            <input type="reset" value="Reset" id="resetForm" />
-            <input type="submit" value="Envoyer" />
+        <form name="identification" id="monForm" action="~/home/Index" enctype="multipart/form-data" method="post">
+            <label id="pseudo">Pseudonyme : <input name="pseudo" id="ipseudo" type="text" placeholder="@Model.pseudo" required /></label>
+            <label id="passwd">Password : <input name="passwd" id="ipasswd" type="text" placeholder="@Model.passwd" required /></label>
+            <label id="bornDate">Date de naissance : <input id="ibornDate" name="bornDate" type="text" value="@Model.bornDate" required /></label>
+            <!--
+            Avec dateTime par defaut sur le jour en cours
+            <label id="bornDate">Date de naissance : <input name="bornDate" type="date" value="@*DateTime.Today.ToString( "dd-MM-yyyy" )*@" required /></label>
+            -->
+            <div id="contButton">
+                <input type="reset" value="Reset" id="resetForm" />
+                <input type="submit" value="Send" id="sendButton" />
+            </div>
         </form>
     </div>
 </body>

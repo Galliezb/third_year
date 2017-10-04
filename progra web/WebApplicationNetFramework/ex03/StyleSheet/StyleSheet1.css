@@ -67,18 +67,32 @@ h1{
         color: deepskyblue;
     }
 #conteneurForm {
-    width: 400px;
+    width: 370px;
     margin: auto;
     margin-top: 25px;
-    border: 1px solid red;
+    border:1px solid black;
+    background-color:#DDD;
+    padding:15px;
+    box-shadow: 5px 5px 5px #AAA;
 }
 
 #conteneurForm label {
     display: block;
     text-align: right;
+    margin-bottom:5px;
 }
 
-#conteneurForm label input {
-    margin: 5px;
-    margin-left: 15px;
+    #conteneurForm label input {
+        margin: 0px 0px 0px 15px;
+        width: 150px;
+    }
+#contButton{
+    text-align : right;
+}
+#contButton input {
+    width:75px;
+    height:35px;
+    font-size:16px;
+    font-weight:bold;
+    color:black;
 }

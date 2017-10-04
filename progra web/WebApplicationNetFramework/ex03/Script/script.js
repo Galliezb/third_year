@@ -6,6 +6,7 @@ var hex = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
 document.getElementById("btStart").addEventListener("click", toggleFlash);
 document.getElementById("btResetBackground").addEventListener("click", resetBackground);
 //document.getElementById("resetForm").addEventListener("click", monReset);
+document.getElementById("sendButton").addEventListener("click", verifyData);
 
 function toggleFlash() {
 
@@ -46,6 +47,20 @@ function flashouille() {
 
 function resetBackground() {
     document.body.style.backgroundColor = "#FFF";
+}
+
+function verifyData() {
+
+    var sDate = document.getElementById("ibornDate").value;
+
+    //var reg = new RegExp("^(\d{4})\-(\d{2})\-(\d{2})");
+    var reg = /(\d{2})/;
+    //reg.flags = "g";
+    var patt = reg.test(sDate);
+    console.log(sDate +" / match => "+sDate.match(reg) +" patt => "+patt);
+
+
+    return false;
 }
 
 //function monReset() {
