@@ -15,7 +15,7 @@ namespace test {
             Thread test = new Thread( new ThreadStart( MonThread ) );
             // démarrer le thread
             test.Start();
-            test.Abort
+            test.Abort();
 
 
             Console.ReadKey();
