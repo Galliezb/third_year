@@ -6,10 +6,13 @@ using System.Collections.Generic;
 
 namespace lesDelegates_lesThreads
 {
+
+    public delegate ThreadStart MonTypeDelegue ( float a );
+
+
     class Program
     {
 
-        public delegate ThreadStart MonTypeDelegue(float a);
 
         static void Main(string[] args)
         {

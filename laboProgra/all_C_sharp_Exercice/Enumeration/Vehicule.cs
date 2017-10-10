@@ -4,8 +4,10 @@ using System.Text;
 
 namespace Enumeration
 {
-    class Vehicule
-    {
+    class Vehicule {
         public string Marque { get; set; }
+
     }
+
+
 }

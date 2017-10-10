@@ -8,7 +8,7 @@ namespace laboProgra01 {
             Object test = p;
             Console.WriteLine( p.GetType().ToString() );
             Console.WriteLine( p.ToString() );
-            // sera égale a p car Writeline appelle ToString automatiquement si un objet lui est donné
+            // p.ToString() = p car Writeline appelle ToString automatiquement si un objet lui est donné
 
             // placement de variable dans un writeligne avec des {x}
             //Console.WriteLine("test{1}, blabla : {0}", variable1, variable2);

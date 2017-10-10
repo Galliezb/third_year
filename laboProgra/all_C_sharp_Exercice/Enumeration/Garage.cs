@@ -8,7 +8,6 @@ namespace Enumeration
     class Garage:IEnumerable<Vehicule>
     {
         private Vehicule[] flotte;
-        private int taille;
         private int nbVehicule;
 
         public Garage(int tailleGarrage) {
@@ -25,6 +24,7 @@ namespace Enumeration
             }
         }
 
+        // nécessaire au foreach
         public IEnumerator<Vehicule> GetEnumerator() {
             for (int i =0; i<this.nbVehicule; i++) {
                 yield return flotte[i];
@@ -35,7 +35,7 @@ namespace Enumeration
         // dans un foreach il suffira de l'appeler comme une méthode de classe sans 
         // aucun soucis ex : foreach ( vehicule v in G1.getReverse() ){}
         // !!!!!!!!!!!!!!!!! CE SONT DES IENUMERABLE et pas IENUMERATOR
-        public IEnumerator<Vehicule> getReverse() {
+        public IEnumerator<Vehicule> GetReverse() {
             for (int i = nbVehicule-1; i > 0; i--) {
                 yield return flotte[i];
             }
