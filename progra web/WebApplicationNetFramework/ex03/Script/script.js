@@ -6,7 +6,7 @@ var hex = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
 document.getElementById("btStart").addEventListener("click", toggleFlash);
 document.getElementById("btResetBackground").addEventListener("click", resetBackground);
 //document.getElementById("resetForm").addEventListener("click", monReset);
-document.getElementById("sendButton").addEventListener("click", verifyData);
+document.getElementById("sendButton").addEventListener("click", verifyData, false);
 
 function toggleFlash() {
 

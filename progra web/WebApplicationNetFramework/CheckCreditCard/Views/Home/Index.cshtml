@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Check if credit card have good number</title>
+</head>
+<body>
+    <div id="box">
+        <form name="monForm" action="#" method="post">
+            <div id="mess"></div>
+            <input type="text" id="creditCard" placeholder="Enter Credit Number" value="" />
+            <div class="groupButton">
+                <input type="submit" value="Check" id="subForm" onclick="return false;"
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    function loadScriptWhenDomIsReady() {
+        var script = document.createElement('script');
+        script.src = "/Script/js.js";
+        document.head.appendChild(script);
+
+    }
+    document.addEventListener("DOMContentLoaded", loadScriptWhenDomIsReady);
+</script>
