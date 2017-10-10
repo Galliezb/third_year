@@ -6,7 +6,7 @@ using System.Web;
 namespace ex03.Models {
 
     // les noms des propriétés doivent avoir le même nom que les nom du form pour
-    // focntionner sans soucis.
+    // fonctionner sans soucis.
 
     public class TraiteGet {
         public string pseudo { get; set; }
