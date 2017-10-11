@@ -1,14 +1,16 @@
-﻿document.getElementById("subForm").addEventListener("click", function (event) {
-    //return false;
-    event.preventDefault();
-    return false;
-});
+﻿//document.getElementById("subForm").addEventListener("click", function (event) {
+//    //return false;
+//    event.preventDefault();
+//    return false;
+//});
 //document.getElementById("subForm").addEventListener("click", checkCreditCardValidity() );
-document.getElementById("subForm").addEventListener("click", function () { checkCreditCardValidity(); });
+document.getElementById("subForm").addEventListener("click", function (event) { checkCreditCardValidity(); });
 //document.getElementById("subForm").addEventListener("click", function () { return false; });
 
 
 function checkCreditCardValidity() {
+    
+    event.preventDefault();
 
     var creditCard = document.getElementById("creditCard").value;
     var total = 0;
