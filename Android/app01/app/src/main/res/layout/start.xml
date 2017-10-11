@@ -9,13 +9,13 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/txtName"
+            android:id="@+id/txtConfirmationName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:text="Enter your name" />
     </LinearLayout>
 
     <LinearLayout

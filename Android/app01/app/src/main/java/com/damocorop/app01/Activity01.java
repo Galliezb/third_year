@@ -5,11 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 public class Activity01 extends AppCompatActivity {
 
@@ -27,12 +24,18 @@ public class Activity01 extends AppCompatActivity {
         bouton5.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Toast.makeText(MainActivity.this,"test",Toast.LENGTH_SHORT);
+                // petit popup
+                Toast.makeText(Activity01.this,"test",Toast.LENGTH_SHORT);
                 // appeler une nouvelle activity
-                Intent intent = new Intent(MainActivity.this,MainActivity.class);
+                Intent newIntent = new Intent(Activity01.this,Activity02.class);
                 // startActivity est déclaré ans AppCompatActivity
-                //MainActivity.this si nécessaire
-                startArctivity(intent);
+                //Activity01.this si nécessaire
+
+                // récupérer le nom + l'envoyer en paramètre
+                String txtToSend = ((TextView) findViewById(R.id.txtConfirmationName)).getText().toString();
+                newIntent.putExtra("name", txtToSend);
+                startActivity(newIntent);
+
             }
         });
 
