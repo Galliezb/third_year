@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/style/StyleSheet1.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="conteneur">
+        <form action="#" method="post" name="monForm">
+            <label id="labelCookie">Contenu du cookie : </label><input name="contenuCookie" type="text" id="contenuCookie" value="" />
+            <input type="button" id="effacer" value="Effacer" />
+            <input type="button" id="sauvegarder" value="Sauvegarder" />
+            <input type="submit" value="Soumettre" name="submit" />
+        </form>
+    </div>
+</body>
+</html>
+<script>
+        function loadScriptAfterDOMReady() {
+            var script = document.createElement('script');
+            script.src = "\\Scripts\\js.js";
+            document.head.appendChild(script);
+            script.addEventListener("load", function () {
+                ReadCookie();
+            });
+
+            script.onload = function () { document.removeEventListener('DOMContentLoaded', loadScriptAfterDOMReady); };
+        }
+        document.addEventListener('DOMContentLoaded', loadScriptAfterDOMReady);
+
+</script>
+

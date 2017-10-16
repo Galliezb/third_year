@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckCreditCard", "CheckCre
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jquery02", "Jquery02\Jquery02.csproj", "{10621924-49F1-4C49-B1FC-06C202E1B274}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cookie", "cookie\cookie.csproj", "{BA9DBD11-5F9A-4DE4-BBF4-4A6CA345FD7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ajax_Jquery", "ajax_Jquery\ajax_Jquery.csproj", "{7DA92EDE-1320-45B3-B3F8-6902FA1CC66B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{10621924-49F1-4C49-B1FC-06C202E1B274}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10621924-49F1-4C49-B1FC-06C202E1B274}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10621924-49F1-4C49-B1FC-06C202E1B274}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA9DBD11-5F9A-4DE4-BBF4-4A6CA345FD7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA9DBD11-5F9A-4DE4-BBF4-4A6CA345FD7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA9DBD11-5F9A-4DE4-BBF4-4A6CA345FD7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA9DBD11-5F9A-4DE4-BBF4-4A6CA345FD7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DA92EDE-1320-45B3-B3F8-6902FA1CC66B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DA92EDE-1320-45B3-B3F8-6902FA1CC66B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DA92EDE-1320-45B3-B3F8-6902FA1CC66B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DA92EDE-1320-45B3-B3F8-6902FA1CC66B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
