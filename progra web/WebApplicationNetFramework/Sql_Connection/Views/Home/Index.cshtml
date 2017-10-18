@@ -1,4 +1,4 @@
-﻿
+﻿@Model List<Etudiant>(ID,Matricule,Nom)
 @{
     Layout = null;
 }
@@ -12,6 +12,25 @@
 </head>
 <body>
     <div> 
+        <select id="matSelect" name="choixMatricule">
+            <option value="">Sélectionnez un matricule</option>
+            @foreach (var ets in @Model) {
+                <option value="@ets.ID">@ets.Nom</option>
+            }
+        </select>
     </div>
 </body>
 </html>
+<script src="~/Scripts/jquery-3.2.1.js"></script>
+<script>
+
+    $.ready(function () {
+
+        $("#matSelect").on("onChange", function () {
+
+        });
+
+    });
+
+
+</script>
