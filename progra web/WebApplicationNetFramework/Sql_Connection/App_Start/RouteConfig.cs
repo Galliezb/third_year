@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace ajax_Jquery
+namespace Sql_Connection
 {
     public class RouteConfig
     {
@@ -15,8 +15,7 @@ namespace ajax_Jquery
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/",
-                //url: "{controller}/{action}/{identite}",
+                url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
