@@ -14,7 +14,7 @@ public class Bonjour extends AppCompatActivity {
         String nomRecu = getIntent().getExtras().getString("name");
         String txtToDisplay = "Bonjour "+nomRecu+", c'était pas si dûr hein ?<br />AS à planté 18 fois pour générer ce truc de merde.";
         ((TextView)findViewById(R.id.txtViewBonjour)).setText(txtToDisplay);
-        R.id.txt
+
     }
 
 
