@@ -10252,10 +10252,10 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-//$(document).ready(function(){
+$(document).ready(function(){
 
-//    var script = document.createElement("script");
-//    script.src = "/Script/js.js";
-//    $("head").append(script);
+    var script = document.createElement("script");
+    script.src = "/Scripts/js.js";
+    $("head").append(script);
 
-//});
+});

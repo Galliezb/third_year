@@ -1,4 +1,5 @@
-﻿@Model List<Etudiant>(ID,Matricule,Nom)
+﻿@*@model List<Sql_Connection.Models.Etudiant>( ID , Matricule , Nom )*@
+@model List<Sql_Connection.Models.Etudiant>
 @{
     Layout = null;
 }
@@ -9,28 +10,33 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link href="~/Styles/StyleSheet1.css" rel="stylesheet" />
 </head>
 <body>
-    <div> 
+    <div id="conteneur"> 
         <select id="matSelect" name="choixMatricule">
             <option value="">Sélectionnez un matricule</option>
-            @foreach (var ets in @Model) {
-                <option value="@ets.ID">@ets.Nom</option>
+            @foreach (var ets in Model) {
+                <option value="@ets.Matricule">@ets.Matricule</option>
             }
         </select>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Matricule</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Localite</th>
+            </tr>
+            <tr>
+                <td id="colId"></td>
+                <td id="colMatricule"></td>
+                <td id="colNom"></td>
+                <td id="colPrenom"></td>
+                <td id="colLocalite"></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
 <script src="~/Scripts/jquery-3.2.1.js"></script>
-<script>
-
-    $.ready(function () {
-
-        $("#matSelect").on("onChange", function () {
-
-        });
-
-    });
-
-
-</script>

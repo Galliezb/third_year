@@ -1,2 +1,37 @@
 ﻿body {
 }
+
+select {
+    font-size: 20px;
+    text-align: center;
+    margin:15px 0px 15px 0px;
+}
+
+table {
+    border: 1px solid black;
+    width: 100%;
+}
+
+tr {
+}
+
+/*td:nth-child(2n) {
+    background-color: aquamarine;
+}
+
+td:nth-child(2n+1) {
+    background-color: cornflowerblue;
+}*/
+
+#conteneur {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0px 0px -200px;
+    width: 400px;
+    height: 300px;
+    text-align:center;
+    padding:5px;
+    border:2px solid black;
+    box-shadow: black 0px 0px 15px 0px;
+}
