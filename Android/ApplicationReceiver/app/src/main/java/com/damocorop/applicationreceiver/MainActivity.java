@@ -17,14 +17,14 @@ public class MainActivity extends AppCompatActivity {
         AnswerToAppA();
 
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        registerReceiver(new ReceiverFromAppA(),
-                new IntentFilter("com.damocorop.app01.VERS_RECEIVER"));
-
-    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        registerReceiver(new ReceiverFromAppA(),
+//                new IntentFilter("com.damocorop.app01.VERS_RECEIVER"));
+//
+//    }
 
     public void AnswerToAppA(){
 
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         String monTxt = monIntent.getStringExtra("monTxt");
 
         // popup()
-        Toast.makeText(MainActivity.this,"callIntent appB txt recu => "+monTxt,Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this,"callIntent appB txt recu => "+monTxt,Toast.LENGTH_LONG).show();
 
     }
 

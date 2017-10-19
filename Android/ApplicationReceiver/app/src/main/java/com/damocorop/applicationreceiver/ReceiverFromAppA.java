@@ -16,9 +16,9 @@ public class ReceiverFromAppA extends BroadcastReceiver {
     public void onReceive(Context context,Intent intent) {
         Log.d("moi","onReceive OK");
         String messageRecu = intent.getStringExtra("monTxt");
-        Toast.makeText(context,"Receiver : "+messageRecu,Toast.LENGTH_SHORT);
+        Toast.makeText(context,"Receiver : "+messageRecu,Toast.LENGTH_LONG).show();
 
-        Toast.makeText(context,"Receiver : "+intent.getAction(),Toast.LENGTH_SHORT);
+        Toast.makeText(context,"Receiver : "+intent.getAction(),Toast.LENGTH_LONG).show();
     }
 
 
