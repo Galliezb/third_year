@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Test Personel Divers</title>
+    <link href="~/Styles/StyleSheet1.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Tests persos HTML5 / AJAX</h1>
+    <div id="conteneurRequete">
+        <ul>
+            <li><input type="button" value="Add User" /></li>
+            <li><input type="button" value="Del User" /></li>
+            <li><input type="button" value="Transaction" /></li>
+            <li><input type="button" value="Add Transaction" /></li>
+            <li><input type="button" value="Del Transaction" /></li>
+            <li><input type="button" value="Sold" /></li>
+        </ul>
+    </div>
+    <div id="addMenu"></div>
+    <div id="conteneurRetourAjax">
+        <div id="addUser">
+            <input id="AddUserName" type="text" name="Name" value="sqdsqdq" placeholder="Name" />
+            <input id="AddUserFirstname" type="text" name="Firstname" value="qsdqd" placeholder="Firstname" />
+            <input id="AddUserSolde" type="text" name="Solde" value="1234" placeholder="Solde" />
+            <input id="AddUserSubmit" type="button" value="Save" />
+        </div>
+    </div>
+    <div id="backgroundPopup">
+        <div id="popupIn"></div>
+        <input id="btLeavePopup" type="button" value="I Understand" />
+    </div>
+</body>
+</html>
+<script async src="~/Scripts/jquery-3.2.1.js"></script>
