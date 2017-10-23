@@ -18,7 +18,7 @@ namespace testDiversPersos.Controllers {
             return View();
         }
 
-        public JsonResult AddUser ( Users u ) {
+        public JsonResult AddUser ( Users u, List<Transaction> lt ) {
 
             string str = @"Server=127.0.0.1\SQLEXPRESS; Database = Banque; Uid = labo; Password = 123";
 

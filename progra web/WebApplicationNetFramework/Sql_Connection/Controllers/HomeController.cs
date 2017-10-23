@@ -23,7 +23,7 @@ namespace Sql_Connection.Controllers {
 
         private void GetFromStoredProcedure ( string nameProcedure  ) {
 
-            string str = @"Server=localhost\SQLEXPRESSFIXE; Database = labo_sql_connection; Uid = labo; Password = 123456789";
+            string str = @"Server=127.0.0.1\SQLEXPRESSFIXE; Database = labo_sql_connection; Uid = labo; Password = 123456789";
 
             string connectionStr = str;
             myConnection = new SqlConnection( connectionStr );

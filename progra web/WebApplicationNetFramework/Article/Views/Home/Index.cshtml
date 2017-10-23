@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Styles/StyleSheet1.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="conteneur">
+        <label id="lbNom">Nom : </label><input type="text" value="" placeholder="Nom" />
+        <label id="lbDescriptif">Descriptif : </label>
+        <textarea id="descriptif"></textarea>
+        <label id="lbPromotion">En promotion ?</label><input type="checkbox" id="promotion" /><br />
+        <label id="lbPhoto">Photo : </label><input id="fileToUpload" type="file" /><input type="button" value="Preview" id="preview" />
+        <img id="imgPreview" src="" />
+        <input type="button" value="Valider" id="valider" disabled />
+    </div>
+</body>
+</html>
+<script src="~/Scripts/jquery-3.2.1.js"></script>

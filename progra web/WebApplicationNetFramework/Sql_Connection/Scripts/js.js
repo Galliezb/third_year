@@ -20,6 +20,7 @@ $().ready(function () {
             url: "/Home/GetAllFromMatricule/"+mat,
             type: "POST",
             dataType: "Json",
+            data:JSON.stringify(monObjet)
             statusCode: {
                 200: function (msg) {
                     console.log("REMPLIR TD " + msg.ID);
