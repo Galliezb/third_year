@@ -35,7 +35,7 @@ $().ready(function () {
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json;charset=utf-8",
-                //data: JSON.stringify(user),
+                data: JSON.stringify(user),
                 succes: function (e) {
                     togglePopup("Utilisateur ajouté.");
                     $("#AddUserName").val("").focus();
@@ -50,6 +50,24 @@ $().ready(function () {
 
             //$.ajax({
             //    url: "/TestAvec/TestController",
+            //    type: "POST",
+            //    dataType: "json",
+            //    contentType: "application/json;charset=utf-8",
+            //    //data: JSON.stringify(user),
+            //    succes: function (e) {
+            //        togglePopup("Utilisateur ajouté.");
+            //        $("#AddUserName").val("").focus();
+            //        $("#AddUserFirstname").val("");
+            //        $("#AddUserSolde").val("0");
+            //        console.log(e[0]);
+            //    },
+            //    error: function (e) {
+            //        console.log(e[0]);
+            //    }
+            //});
+
+            //$.ajax({
+            //    url: "/TestSans/TestController",
             //    type: "POST",
             //    dataType: "json",
             //    contentType: "application/json;charset=utf-8",
