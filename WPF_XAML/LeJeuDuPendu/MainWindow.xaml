@@ -5,24 +5,91 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LeJeuDuPendu"
         mc:Ignorable="d"
-        Title="Le jeu du pendu ( maudit pirate )" Height="1080" Width="1920"
+        Title="Le jeu du pendu ( maudit pirate )" Height="400" Width="1000"
         WindowStyle="None" ResizeMode="NoResize"  
-        WindowStartupLocation="CenterScreen" WindowState="Maximized">
-    <DockPanel>
-        <Menu>
-            <MenuItem>Jeu
-                <MenuItem>Démarrer</MenuItem>
+        WindowStartupLocation="CenterScreen">
+    <DockPanel LastChildFill="False">
+        <Menu DockPanel.Dock="Top" FontSize="16" FontFamily="Rockwell">
+            <Menu.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FFACACAC" Offset="1"/>
+                </LinearGradientBrush>
+            </Menu.Background>
+            <MenuItem Header="Partie">
+                <MenuItem Header="Démarrer" Click="Demarrer_Click"></MenuItem>
             </MenuItem>
-            <MenuItem>?
-                <MenuItem>Aide</MenuItem>
-                <MenuItem>A propos de</MenuItem>
+            <MenuItem Header="Difficulté">
+                <MenuItem Name="difficulty0" Header="Baby" IsChecked="True" IsCheckable="True" Checked="SaveDifficulty"></MenuItem>
+                <MenuItem Name="difficulty1" Header="Noob" IsCheckable="True" Checked="SaveDifficulty"></MenuItem>
+                <MenuItem Name="difficulty2" Header="Rookie" IsCheckable="True" Checked="SaveDifficulty"></MenuItem>
+                <MenuItem Name="difficulty3" Header="Normal" IsCheckable="True" Checked="SaveDifficulty"></MenuItem>
+                <MenuItem Name="difficulty4" Header="Avancée" IsCheckable="True" Checked="SaveDifficulty"></MenuItem>
+                <MenuItem Name="difficulty5" Header="Vétéran" IsCheckable="True" Checked="SaveDifficulty"></MenuItem>
+                <MenuItem Name="difficulty6" Header="Cauchemardesque" IsCheckable="True" Checked="SaveDifficulty"></MenuItem>
+                <MenuItem Name="difficulty7" Header="Impossible" IsCheckable="True" Checked="SaveDifficulty"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="?">
+                <MenuItem Header="">Aide</MenuItem>
+                <MenuItem Header="A propos de"></MenuItem>
             </MenuItem>
         </Menu>
-        <StackPanel Name="panelGauche" Orientation="Vertical" >
+        <StackPanel Orientation="Vertical">
+            <StackPanel Height="354" Orientation="Horizontal">
+                <Border BorderThickness="2" BorderBrush="black">
+                    <StackPanel Width="796" Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,62" >
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,25,0,0">
+                            <TextBlock FontSize="16" FontFamily="Rockwell">Trouvez le mot caché en entrant des lettre !</TextBlock>
+                        </StackPanel>
+                        <StackPanel Name="ConteneurLettre" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,25,0,0">
+                            <Border BorderThickness="1" BorderBrush="Black" Margin="0,10,10,0">
+                                <TextBlock Width="30" FontWeight="Bold" FontSize="20" TextAlignment="Center">A</TextBlock>
+                            </Border>
+                            <Border BorderThickness="1" BorderBrush="Black" Margin="0,10,10,0">
+                                <TextBlock Background="#FFFF7C7C" Width="30" FontWeight="Bold" FontSize="20" TextAlignment="Center">A</TextBlock>
+                            </Border>
+                            <Border BorderThickness="1" BorderBrush="Black" Margin="0,10,10,0">
+                                <TextBlock Background="#FF9AFF7C" Width="30" FontWeight="Bold" FontSize="20" TextAlignment="Center">A</TextBlock>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,25,0,0" HorizontalAlignment="Center">
+                            <TextBlock FontWeight="Bold" FontSize="20">Prochaine Lettre :</TextBlock>
+                            <TextBox Name="LetterProposed" Width="30" Height="30" FontWeight="Bold" FontSize="20" Margin="10,0,0,0"></TextBox>
+                            <Button Content="Essayer" Padding="15,0,15,5" Height="30" Margin="10,0,0,0" FontSize="17" Click="TryLetter">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White" Offset="0"/>
+                                        <GradientStop Color="#FFACACAC" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,25,0,0">
+                            <Label FontWeight="Bold" FontSize="20" Content="Vous avez essayé : "></Label>
+                            <Label FontWeight="Bold" FontSize="20" Name="tryedLetter" Content=""></Label>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Border BorderThickness="0,2,2,2" BorderBrush="black">
+                    <StackPanel Width="198" Orientation="Vertical" VerticalAlignment="Center" >
+                        <Image Name="imgPendu" Source=".\img\etat0.jpg"  Width="150" Height="300"></Image>
+                    </StackPanel>
+                </Border>
 
+            </StackPanel>
+            <StatusBar DockPanel.Dock="Bottom" FontSize="16" FontFamily="Rockwell">
+                <StatusBar.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="#FFA8A8A8" Offset="1"/>
+                    </LinearGradientBrush>
+                </StatusBar.Background>
+                <StatusBarItem HorizontalAlignment="Right">
+                    <Label Name="lbSB" Padding="0,0,0,5">Ready for play noob ?</Label>
+                </StatusBarItem>
+            </StatusBar>
         </StackPanel>
-        <StackPanel Name="panelDroite" Orientation="Vertical" >
 
-        </StackPanel>
+
     </DockPanel>
 </Window>
