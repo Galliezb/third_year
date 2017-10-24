@@ -192,6 +192,8 @@ namespace LeJeuDuPendu {
             etatImage = 0;
             // reinitialise l'image
             imgPendu.Source = SourceOfImage( etatImage );
+            // memory letter
+            tryedLetter.Content = "";
 
             // recupère le conteneur et vide les lettres
             StackPanel LeConteneur = (StackPanel) FindName( "ConteneurLettre" );
