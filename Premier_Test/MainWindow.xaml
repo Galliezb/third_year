@@ -1,0 +1,70 @@
+﻿<!--Travail avec les classes partielles, ça rappelle Windows form non ?-->
+<!--xmlns:local="clr-namespace:Premier_Test"-->
+<!--même namespace-->
+<Window x:Class="Premier_Test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Premier_Test"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <!--<StackPanel Orientation="Vertical">
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Fichier"></MenuItem>
+                <MenuItem Header="Edition"></MenuItem>
+                <MenuItem Header="?"></MenuItem>
+            </Menu>
+            <StackPanel Orientation="Vertical">
+                <Button Width="100" Height="50" Content="FirstButton"></Button>
+                --><!--OU--><!--
+                <Button Width="100" Height="50">FirstButton</Button>
+                <ToolBar>
+                    <ComboBox>
+                        <ComboBoxItem>Choix 1</ComboBoxItem>
+                        <ComboBoxItem>choix 2</ComboBoxItem>
+                        <ComboBoxItem>choix 3</ComboBoxItem>
+                    </ComboBox>
+                </ToolBar>
+                <StatusBar DockPanel.Dock="Bottom">
+                    <StatusBarItem>Status bar item 1</StatusBarItem>
+                    <StatusBarItem>Status bar item 2</StatusBarItem>
+                </StatusBar>
+            </StackPanel>
+        </DockPanel>
+    </StackPanel>-->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--BorderThickness="LEFT,TOP,RIGHT,BOTTOM"-->
+        <Border BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"></Border>
+        <Border BorderThickness="0,1,1,1" BorderBrush="Black" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center">Moyenne</Label>
+        </Border>
+        <!--<Border BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="0" Grid.Column="2"></Border>-->
+        <Border BorderThickness="0,1,1,1" BorderBrush="Black" Grid.Row="0" Grid.Column="3"></Border>
+        <!--<Border BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="1" Grid.Column="0"></Border>-->
+        <Border BorderThickness="0,0,1,1" BorderBrush="Black" Grid.Row="1" Grid.Column="1"></Border>
+        <Border BorderThickness="0,0,1,1" BorderBrush="Black" Grid.Row="1" Grid.Column="2"></Border>
+        <Border BorderThickness="0,0,1,1" BorderBrush="Black" Grid.Row="1" Grid.Column="3"></Border>
+        <Border BorderThickness="1,0,1,1" BorderBrush="Black" Grid.Row="2" Grid.Column="0"></Border>
+        <Border BorderThickness="0,0,1,1" BorderBrush="Black" Grid.Row="2" Grid.Column="1"></Border>
+        <Border BorderThickness="0,0,1,1" BorderBrush="Black" Grid.Row="2" Grid.Column="2"></Border>
+        <Border BorderThickness="0,0,1,1" BorderBrush="Black" Grid.Row="2" Grid.Column="3"></Border>
+        <Border BorderThickness="1,0,1,1" BorderBrush="Black" Grid.Row="3" Grid.Column="0"></Border>
+        <Border BorderThickness="0,0,1,1" BorderBrush="Black" Grid.Row="3" Grid.Column="1"></Border>
+        <Border BorderThickness="0,0,1,1" BorderBrush="Black" Grid.Row="3" Grid.Column="2"></Border>
+        <Border BorderThickness="0,0,1,1" BorderBrush="Black" Grid.Row="3" Grid.Column="3"></Border>
+    </Grid>
+</Window>

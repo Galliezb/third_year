@@ -27,7 +27,7 @@ $().ready(function () {
                     if (response != null || response != '')
                         alert(response);
                     $("#file").val('');
-                    $("imgPreview").attr("src", response);
+                    //$("imgPreview").attr("src", response);
                 },
                 error: function (er) {
                     alert("Error => " + er);
