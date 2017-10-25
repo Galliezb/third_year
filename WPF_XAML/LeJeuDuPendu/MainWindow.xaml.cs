@@ -54,24 +54,25 @@ namespace LeJeuDuPendu {
         private string DBGiveMeAWord () {
 
             string strToReturn;
-
-            //string connectionStr = @"Server=127.0.0.1\SQLEXPRESS; Database = WPF_XAML; Uid = labo; Password = 123";
-            string connectionStr = @"Server=127.0.0.1\SELOCALPORTABLE; Database = WPF_XAML; Uid = labo; Password = 123";
-            SqlConnection myConnection = new SqlConnection( connectionStr );
-            myConnection.Open();
-
-            SqlCommand myCmd = new SqlCommand {
-                Connection = myConnection ,
-                CommandType = CommandType.StoredProcedure ,
-                CommandText = "GetWord"
-            };
-            myCmd.Parameters.AddWithValue( "@difficulty" , gameDifficulty );
-
-            SqlDataReader myRd = myCmd.ExecuteReader();
-            myRd.Read();
-            strToReturn = myRd[0].ToString();
-
+            strToReturn = "aaaaa";
             return strToReturn;
+            ////string connectionStr = @"Server=127.0.0.1\SQLEXPRESS; Database = WPF_XAML; Uid = labo; Password = 123";
+            //string connectionStr = @"Server=127.0.0.1\SELOCALPORTABLE; Database = WPF_XAML; Uid = labo; Password = 123";
+            //SqlConnection myConnection = new SqlConnection( connectionStr );
+            //myConnection.Open();
+
+            //SqlCommand myCmd = new SqlCommand {
+            //    Connection = myConnection ,
+            //    CommandType = CommandType.StoredProcedure ,
+            //    CommandText = "GetWord"
+            //};
+            //myCmd.Parameters.AddWithValue( "@difficulty" , gameDifficulty );
+
+            //SqlDataReader myRd = myCmd.ExecuteReader();
+            //myRd.Read();
+            //strToReturn = myRd[0].ToString();
+
+            //return strToReturn;
 
         }
 
@@ -175,7 +176,6 @@ namespace LeJeuDuPendu {
             Image imgNewSource = new Image {
                 Source = new BitmapImage( monUri )
             };
-
             return imgNewSource.Source;
         }
 

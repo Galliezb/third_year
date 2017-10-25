@@ -29,6 +29,9 @@ namespace Article.Controllers
         // var ms = memoryStream()
         // sourceimage.Save(ms, System.drawing.imaging.Imageformat.Png )
         // MyCmd.Parameters.AddWithValue("@nameParamater", ms.toArray() );
+        // pour le renvoi de l'imahge vers et depuis la BDD
+        // s'il n'y a pas d'image uploader avec le form
+        // Il est possible d'utiliser un DBNull.null
 
         //    return "fichier uploadé";
 
@@ -36,11 +39,34 @@ namespace Article.Controllers
         [HttpPost]
         public string UploadImage() {
 
-            // TODO mise à l'échelle de l'image
+            HttpPostedFileBase fichierRecu = Request.Files.Get( 0 );
+            // vérification qu'il s'agit d'une image
+            if (fichierRecu.ContentLength > 0) {
+                return "Erreur de réception du fichier";
+                // vérification qu'il s'agit d'une image
+            } else if (!fichierRecu.ContentType.StartsWith( "image" )) {
+                return "Type de fichier inconnu";
+            // vérification du poids de l'image ( 5ko max
+            } else if ( fichierRecu.ContentLength > 50000 ) {
+                return "Le fichier est trop volumineux";
+            } else {
+
+                // nom de l'image uploadé
+                string[] toSplit = Request.Files[0].FileName.Split( '\\' );
+                string name = toSplit[( toSplit.Length - 1 )];
+
+                // redimensionner si nécessaire
+                string fileName = Path.GetFileName( fichierRecu.pa );
+                var path = Server.MapPath( "/img/" );
+                string FullPath = path + @"\" + fileName;
+                System.Drawing.Image sourceimage = System.Drawing.Image.FromStream( fichierRecu.InputStream );
+                sourceimage.Save( FullPath );
+
+            }
 
             // deuxième façon de récupérer
-            var toSplit = Request.Files[0].FileName.Split('\\');
-            string name = toSplit[(toSplit.Length-1)];
+            //var toSplit = Request.Files[0].FileName.Split('\\');
+            //string name = toSplit[(toSplit.Length-1)];
             Request.Files[0].SaveAs( @"C:\bruno\githubServer\third_year\progra web\WebApplicationNetFramework\Article\img\"+name );
 
             // avec JsonResult on aurait pu passer par ici
@@ -50,8 +76,16 @@ namespace Article.Controllers
 
         public JsonResult AddArticle( Articles a) {
 
-            return Json( "Article ajourée" );
+            return Json( "Article ajoutée" );
 
         }
+
+        // protection contre les attaques de forms qui proviennent d'ailleurs que du site web
+        // Insertion automatique d'un champ ID ( le token )
+        // via le cookie anti contrefaçon
+        // dans la vue on insert un @Html.AntiForgeryToken()
+        // sera validé dans le Controller par
+        // [ValidateAntiForgeryToken]
+
     }
 }
