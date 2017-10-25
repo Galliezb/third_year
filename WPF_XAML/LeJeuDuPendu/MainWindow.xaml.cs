@@ -54,25 +54,24 @@ namespace LeJeuDuPendu {
         private string DBGiveMeAWord () {
 
             string strToReturn;
-            strToReturn = "aaaaa";
+
+            //string connectionStr = @"Server=127.0.0.1\SQLEXPRESS; Database = WPF_XAML; Uid = labo; Password = 123";
+            string connectionStr = @"Server=127.0.0.1\SELOCALPORTABLE; Database = WPF_XAML; Uid = labo; Password = 123";
+            SqlConnection myConnection = new SqlConnection( connectionStr );
+            myConnection.Open();
+
+            SqlCommand myCmd = new SqlCommand {
+                Connection = myConnection,
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "GetWord"
+            };
+            myCmd.Parameters.AddWithValue( "@difficulty", gameDifficulty );
+
+            SqlDataReader myRd = myCmd.ExecuteReader();
+            myRd.Read();
+            strToReturn = myRd[0].ToString();
+
             return strToReturn;
-            ////string connectionStr = @"Server=127.0.0.1\SQLEXPRESS; Database = WPF_XAML; Uid = labo; Password = 123";
-            //string connectionStr = @"Server=127.0.0.1\SELOCALPORTABLE; Database = WPF_XAML; Uid = labo; Password = 123";
-            //SqlConnection myConnection = new SqlConnection( connectionStr );
-            //myConnection.Open();
-
-            //SqlCommand myCmd = new SqlCommand {
-            //    Connection = myConnection ,
-            //    CommandType = CommandType.StoredProcedure ,
-            //    CommandText = "GetWord"
-            //};
-            //myCmd.Parameters.AddWithValue( "@difficulty" , gameDifficulty );
-
-            //SqlDataReader myRd = myCmd.ExecuteReader();
-            //myRd.Read();
-            //strToReturn = myRd[0].ToString();
-
-            //return strToReturn;
 
         }
 
@@ -298,10 +297,11 @@ namespace LeJeuDuPendu {
             // La partie est gagné !
             if ( cpt == motATrouver.Length ) {
 
-                etatImage++;
                 // Affiche l'image gagné
-                imgPendu.Source = SourceOfImage( 8 );
+                etatImage = 8;
+                imgPendu.Source = SourceOfImage( etatImage );
                 // on change la status barre
+                dispatcherTimer.Stop();
                 lbSB.Content = "Félicitation ! Augmente le niveau de difficulté !";
 
 
