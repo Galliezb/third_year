@@ -21,21 +21,17 @@ $().ready(function () {
                 type: "POST",
                 processData: false,
                 data: mesData,
-                dataType: 'json',
+                // on va recevoir un string en retour, plus de Json nécessaire
+                //dataType: 'json',
                 contentType: false,
-                success: function (response) {
-                    if (response != null || response != '')
-                        alert(response);
+                success: function (reponse) {
                     $("#file").val('');
-                    //$("imgPreview").attr("src", response);
+                    $("#imgPreview").attr("src", reponse);
                 },
-                error: function (er) {
-                    alert("Error => " + er);
-                },
-                statusCode: {
-                    200: function () {
-
-                    }
+                error: function (resultat, statut, erreur) {
+                    alert("Error 1 => " + resultat);
+                    alert("Error 2 => " + statut);
+                    alert("Error 3 => " + erreur);
                 }
 
             });

@@ -55,7 +55,8 @@ namespace LeJeuDuPendu {
 
             string strToReturn;
 
-            string connectionStr = @"Server=127.0.0.1\SQLEXPRESS; Database = WPF_XAML; Uid = labo; Password = 123";
+            //string connectionStr = @"Server=127.0.0.1\SQLEXPRESS; Database = WPF_XAML; Uid = labo; Password = 123";
+            string connectionStr = @"Server=127.0.0.1\SELOCALPORTABLE; Database = WPF_XAML; Uid = labo; Password = 123";
             SqlConnection myConnection = new SqlConnection( connectionStr );
             myConnection.Open();
 
