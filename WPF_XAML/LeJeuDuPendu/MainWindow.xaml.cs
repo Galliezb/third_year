@@ -53,22 +53,32 @@ namespace LeJeuDuPendu {
 
         private string DBGiveMeAWord () {
 
-            string strToReturn;
+            string strToReturn = "Default";
 
-            string connectionStr = @"Server=127.0.0.1\SQLEXPRESS; Database = WPF_XAML; Uid = labo; Password = 123";
-            SqlConnection myConnection = new SqlConnection( connectionStr );
-            myConnection.Open();
+            try {
 
-            SqlCommand myCmd = new SqlCommand {
-                Connection = myConnection ,
-                CommandType = CommandType.StoredProcedure ,
-                CommandText = "GetWord"
-            };
-            myCmd.Parameters.AddWithValue( "@difficulty" , gameDifficulty );
+                //string connectionStr = @"Server=127.0.0.1\SQLEXPRESS; Database = WPF_XAML; Uid = labo; Password = 123";
+                string connectionStr = @"Server=127.0.0.1\SELOCALPORTABLE; Database = WPF_XAML; Uid = labo; Password = 123";
+                SqlConnection myConnection = new SqlConnection( connectionStr );
+                myConnection.Open();
 
-            SqlDataReader myRd = myCmd.ExecuteReader();
-            myRd.Read();
-            strToReturn = myRd[0].ToString();
+                SqlCommand myCmd = new SqlCommand {
+                    Connection = myConnection,
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "GetWord"
+                };
+                myCmd.Parameters.AddWithValue( "@difficulty", gameDifficulty );
+
+                SqlDataReader myRd = myCmd.ExecuteReader();
+                myRd.Read();
+                strToReturn = myRd[0].ToString();
+
+                myRd.Close();
+                myConnection.Close();
+
+            } catch( SqlException sqlExc) {
+
+            }
 
             return strToReturn;
 
@@ -101,15 +111,24 @@ namespace LeJeuDuPendu {
 
         private void SaveDifficulty ( object sender , RoutedEventArgs e ) {
 
+            // En travaillant sur le click plutot que sur le checked on ne soulevera pas 
+            // l'evènement checked. De ce fait pas de stackOverflow.
+            // Il suffit ensuite de sauvegarder quel element est Ischecked="true"
+            // pour eviter de parcourir tous les items
+            // isCheckable permet juste faire changer l'etat du IsCHecked au click de l'utilisateur
+
             // récupère le numéro de difficulté cliqué
             MenuItem clicked = (MenuItem) sender;
             int whoIsClicked = int.Parse( clicked.Name.Substring( 10 ) );
 
             // checked = false pour les autres
             // On évite les multi-choix en difficulté ;)
+            // pour éviter le LMI.count, on peut charger tout ceci après que l'évènement loaded
+            // du Windows ai été soulevé. Qui assure que tout le Xaml est prêt ( comme le DOMContentReady )
             if ( LMI.Count > 0 ) {
                 foreach ( MenuItem mi in LMI ) {
 
+                    /// vior au dessus comment changer ceci
                     mi.Checked -= SaveDifficulty;
                     if ( whoIsClicked != int.Parse( mi.Name.Substring( 10 ) ) ) {
                         mi.IsChecked = false;
@@ -169,13 +188,21 @@ namespace LeJeuDuPendu {
 
         private ImageSource SourceOfImage ( int number ) {
 
-            string strTest = "pack://application:,,,/LeJeuDuPendu;component/img/etat" + number + ".jpg";
-            Uri monUri = new Uri( strTest );
-            Image imgNewSource = new Image {
-                Source = new BitmapImage( monUri )
-            };
+            //string strTest = "pack://application:,,,/LeJeuDuPendu;component/img/etat" + number + ".jpg";
+            //Uri monUri = new Uri( strTest );
+            //Image imgNewSource = new Image {
+            //    Source = new BitmapImage( monUri )
+            //};
+            //return imgNewSource.Source;
 
-            return imgNewSource.Source;
+            // Méthode MR Wilfart
+            // via les chemins relatifs
+            string name = "img/etat" + number + ".jpg";
+            BitmapImage img = new BitmapImage();
+            img.BeginInit();
+            img.UriSource = new Uri(name,UriKind.Relative);
+            img.EndInit();
+            return img;
         }
 
         private void Demarrer_Click ( object sender , RoutedEventArgs e ) {
@@ -297,10 +324,11 @@ namespace LeJeuDuPendu {
             // La partie est gagné !
             if ( cpt == motATrouver.Length ) {
 
-                etatImage++;
                 // Affiche l'image gagné
-                imgPendu.Source = SourceOfImage( 8 );
+                etatImage = 8;
+                imgPendu.Source = SourceOfImage( etatImage );
                 // on change la status barre
+                dispatcherTimer.Stop();
                 lbSB.Content = "Félicitation ! Augmente le niveau de difficulté !";
 
 
