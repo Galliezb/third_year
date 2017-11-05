@@ -53,11 +53,12 @@ namespace Article.Controllers
 
                 if ( monReader["img"] != DBNull.Value ) {
                     byte[] outByte = (byte[]) monReader["img"];
-                    string base64 = Convert.ToBase64String( outByte );
+                    string base64 = Convert.ToBase64String( outByte);
                     a.ImgSrc = string.Format( "data:image/jpg;base64,{0}" , base64 );
 
-                    string laStrImg = Convert.ToBase64String( outByte , 0 , outByte.Length );
-                    ViewBag.Base64String = "data:image/png;base64," + laStrImg;
+                    // pour tester
+                    //string laStrImg = Convert.ToBase64String( outByte , 0 , outByte.Length );
+                    //ViewBag.Base64String = "data:image/png;base64," + laStrImg;
                 } else {
                     a.ImgSrc = "/img/default.png";
                 }
@@ -80,16 +81,14 @@ namespace Article.Controllers
 
             // traitement du fichier
             string fileName = Path.GetFileName( monImageUploaded.FileName );
-            //var path = Server.MapPath( "/img/" );
-            //string FullPath = path + @"\" + fileName;
+            var path = Server.MapPath( "/img/" );
+            string FullPath = path + @"\" + fileName;
             ////le fromstream renvoie une image selon le flux, si elle n'est pas correcte, cela lèvera une exception
             //System.Drawing.Image sourceimage = System.Drawing.Image.FromStream( monImageUploaded.InputStream );
             //sourceimage.Save( FullPath );
 
-            byte[] bytes;
-            using ( BinaryReader br = new BinaryReader( monImageUploaded.InputStream ) ) {
-                bytes = br.ReadBytes( monImageUploaded.ContentLength );
-            }
+            BinaryReader br = new BinaryReader( monImageUploaded.InputStream );
+            byte[] bytes = br.ReadBytes( monImageUploaded.ContentLength );
 
             SqlConnection myConnection = new SqlConnection( strConnection );
             myConnection.Open();
@@ -114,7 +113,12 @@ namespace Article.Controllers
             monReader.Close();
             myConnection.Close();
 
-            return Json( new { id = topID , url = "/img/"+ fileName } );
+            // on renvoye l'image pour la prévisualisation
+            string base64 = Convert.ToBase64String( bytes );
+            string ImgSrc = string.Format( "data:image/jpg;base64,{0}" , base64 );
+
+
+            return Json( new { id = topID , url = ImgSrc } );
 
 
             //public string UploadImage() {
@@ -124,65 +128,86 @@ namespace Article.Controllers
             //string name = toSplit[(toSplit.Length-1)];
             //Request.Files[0].SaveAs( @"C:\bruno\githubServer\third_year\progra web\WebApplicationNetFramework\Article\img\"+name );
 
-        //    string fileName = Path.GetFileName( monImageUploaded.FileName );
-        //    var path = Server.MapPath( "/img/" );
-        //    string FullPath = path + @"\" + fileName;
-        //    //le fromstream renvoie une image selon le flux, si elle n'est pas correcte, cela lèvera une exception
-        //    System.Drawing.Image sourceimage = System.Drawing.Image.FromStream( monImageUploaded.InputStream );
-        //    sourceimage.Save( FullPath );
-        // sauvegarde en BDD
-        // var ms = memoryStream()
-        // sourceimage.Save(ms, System.drawing.imaging.Imageformat.Png )
-        // MyCmd.Parameters.AddWithValue("@nameParamater", ms.toArray() );
-        // pour le renvoi de l'imahge vers et depuis la BDD
-        // s'il n'y a pas d'image uploader avec le form
-        // Il est possible d'utiliser un DBNull.null
-
-        public string AddArticle( Articles a) {
-
-        // [HttpPost] => filtrage permettant d'empêcher la méthode d'être appelé sur un get
-        [HttpPost]
-        public string UploadImage() {
-
-            HttpPostedFileBase fichierRecu = Request.Files.Get( 0 );
-            // vérification qu'il s'agit d'une image
-            if (fichierRecu.ContentLength > 0) {
-                return "Erreur de réception du fichier";
-                // vérification qu'il s'agit d'une image
-            } else if (!fichierRecu.ContentType.StartsWith( "image" )) {
-                return "Type de fichier inconnu";
-            // vérification du poids de l'image ( 5ko max
-            } else if ( fichierRecu.ContentLength > 50000 ) {
-                return "Le fichier est trop volumineux";
-            } else {
-
-                // nom de l'image uploadé
-                string[] toSplit = Request.Files[0].FileName.Split( '\\' );
-                string name = toSplit[( toSplit.Length - 1 )];
-
-                // redimensionner si nécessaire
-                string fileName = Path.GetFileName( fichierRecu.pa );
-                var path = Server.MapPath( "/img/" );
-                string FullPath = path + @"\" + fileName;
-                System.Drawing.Image sourceimage = System.Drawing.Image.FromStream( fichierRecu.InputStream );
-                sourceimage.Save( FullPath );
-
-            }
-
-            // deuxième façon de récupérer
-            //var toSplit = Request.Files[0].FileName.Split('\\');
-            //string name = toSplit[(toSplit.Length-1)];
-            Request.Files[0].SaveAs( @"C:\bruno\githubServer\third_year\progra web\WebApplicationNetFramework\Article\img\"+name );
-
-            // avec JsonResult on aurait pu passer par ici
-            //return Json( @"C:\bruno\githubServer\third_year\progra web\WebApplicationNetFramework\Article\img\" + Request.Files[0].FileName );
-            return @"\img\"+name;
+            //    string fileName = Path.GetFileName( monImageUploaded.FileName );
+            //    var path = Server.MapPath( "/img/" );
+            //    string FullPath = path + @"\" + fileName;
+            //    //le fromstream renvoie une image selon le flux, si elle n'est pas correcte, cela lèvera une exception
+            //    System.Drawing.Image sourceimage = System.Drawing.Image.FromStream( monImageUploaded.InputStream );
+            //    sourceimage.Save( FullPath );
+            // sauvegarde en BDD
+            // var ms = memoryStream()
+            // sourceimage.Save(ms, System.drawing.imaging.Imageformat.Png )
+            // MyCmd.Parameters.AddWithValue("@nameParamater", ms.toArray() );
+            // pour le renvoi de l'imahge vers et depuis la BDD
+            // s'il n'y a pas d'image uploader avec le form
+            // Il est possible d'utiliser un DBNull.null
         }
 
+        // Y'a des trucs comme les vérifications qui peuvent être utile. Vieux code à delete.
+        // [HttpPost] => filtrage permettant d'empêcher la méthode d'être appelé sur un get
+        // [HttpPost]
+        //
+        //public string UploadImage () {
+
+        //    HttpPostedFileBase fichierRecu = Request.Files.Get( 0 );
+        //    // vérification qu'il s'agit d'une image
+        //    if ( fichierRecu.ContentLength > 0 ) {
+        //        return "Erreur de réception du fichier";
+        //        // vérification qu'il s'agit d'une image
+        //    } else if ( !fichierRecu.ContentType.StartsWith( "image" ) ) {
+        //        return "Type de fichier inconnu";
+        //        // vérification du poids de l'image ( 5ko max
+        //    } else if ( fichierRecu.ContentLength > 50000 ) {
+        //        return "Le fichier est trop volumineux";
+        //    } else {
+
+        //        // nom de l'image uploadé
+        //        string[] toSplit = Request.Files[0].FileName.Split( '\\' );
+        //        string name = toSplit[( toSplit.Length - 1 )];
+
+        //        // redimensionner si nécessaire
+        //        string fileName = Path.GetFileName( fichierRecu.pa );
+        //        var path = Server.MapPath( "/img/" );
+        //        string FullPath = path + @"\" + fileName;
+        //        System.Drawing.Image sourceimage = System.Drawing.Image.FromStream( fichierRecu.InputStream );
+        //        sourceimage.Save( FullPath );
+
+        //    }
+
+        //    // deuxième façon de récupérer
+        //    //var toSplit = Request.Files[0].FileName.Split('\\');
+        //    //string name = toSplit[(toSplit.Length-1)];
+        //    Request.Files[0].SaveAs( @"C:\bruno\githubServer\third_year\progra web\WebApplicationNetFramework\Article\img\" + name );
+
+        //    // avec JsonResult on aurait pu passer par ici
+        //    //return Json( @"C:\bruno\githubServer\third_year\progra web\WebApplicationNetFramework\Article\img\" + Request.Files[0].FileName );
+        //    return @"\img\" + name;
+        //}
+
+
+        public string AddArticle ( Articles a ) {
+
+            // enregisrement en BDD
+            SqlConnection myConnection = new SqlConnection( strConnection );
+            myConnection.Open();
+
+            SqlCommand myCmd = new SqlCommand {
+                Connection = myConnection ,
+                CommandType = CommandType.StoredProcedure ,
+                CommandText = "addArticle"
+            };
+
+            myCmd.Parameters.AddWithValue( "@nom" , a.Nom );
+            myCmd.Parameters.AddWithValue( "@descriptif" , a.Descriptif );
+            myCmd.Parameters.AddWithValue( "@promo" , a.Promo );
+            if ( a.IdImg != 0 ) {
+                myCmd.Parameters.AddWithValue( "@idImg" , a.IdImg );
+            }
+            myCmd.ExecuteNonQuery();
+            
             myConnection.Close();
 
-            return Json( "Article ajourée" );
-
+            return "Article ajoutée dans la BDD";
         }
 
         // protection contre les attaques de forms qui proviennent d'ailleurs que du site web

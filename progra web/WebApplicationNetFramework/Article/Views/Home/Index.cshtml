@@ -34,7 +34,7 @@
         @foreach ( Articles a in Model ) {
             <div>
                 <div id="photoArticle">
-                    <img src="@ViewBag.Base64String" />
+                    <img src="@a.ImgSrc" />
                 </div>
                 <div id="allDataArticle">
                     <div>Nom :@a.Nom<br /></div>
