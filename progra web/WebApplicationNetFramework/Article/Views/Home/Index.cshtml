@@ -1,7 +1,9 @@
-﻿
+﻿@using Article.Models;
+@model List<Articles>
 @{
     Layout = null;
 }
+
 
 <!DOCTYPE html>
 
@@ -13,13 +15,34 @@
 </head>
 <body>
     <div id="conteneur">
-        <label id="lbNom">Nom : </label><input type="text" value="" placeholder="Nom" />
-        <label id="lbDescriptif">Descriptif : </label>
-        <textarea id="descriptif"></textarea>
-        <label id="lbPromotion">En promotion ?</label><input type="checkbox" id="promotion" /><br />
-        <label id="lbPhoto">Photo : </label><input id="fileToUpload" type="file" /><input type="button" value="Preview" id="preview" />
-        <img id="imgPreview" src="" />
-        <input type="button" value="Valider" id="valider" disabled />
+        <div id="conteneurImgPreview">
+            <span>Photo :</span>
+            <img id="imgPreview" src="/img/default.png" alt="img non trouvée" />
+            <label for="imgToUpload" id="fileToUpload">Ajouter une image</label><input id="imgToUpload" type="file" /><input type="button" value="Preview" id="preview" />
+            <div id="messImg"></div>
+        </div>
+        <form action="~/Controllers/AddArticle" method="post" enctype="multipart/form-data">
+            <input type="hidden" id="IdImg" value="" />
+            <div><label for="Nom">Nom :</label><input id="Nom" name="nom" type="text" value="" /></div>
+            <div><label for="Descriptif">Descriptif :</label><textarea name="Descriptif" id="Descriptif"></textarea></div>
+            <div><label for="Promo">En promotion ?</label><input type="checkbox" name="promotion" id="Promo" /></div>
+            <div><input type="button" value="Envoyer" id="Valider" /></div>
+            <div id="messForm"></div>
+        </form>
+    </div>
+    <div id="conteneurAllArticle">
+        @foreach ( Articles a in Model ) {
+            <div>
+                <div id="photoArticle">
+                    <img src="@ViewBag.Base64String" />
+                </div>
+                <div id="allDataArticle">
+                    <div>Nom :@a.Nom<br /></div>
+                    <div>Descriptif :@a.Descriptif<br /></div>
+                    <div>Promotion :@a.Promo<br /></div>
+                </div>
+            </div>
+        }
     </div>
 </body>
 </html>
