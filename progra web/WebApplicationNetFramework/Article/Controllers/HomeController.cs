@@ -117,7 +117,7 @@ namespace Article.Controllers
             string base64 = Convert.ToBase64String( bytes );
             string ImgSrc = string.Format( "data:image/jpg;base64,{0}" , base64 );
 
-
+            // top id = uniqueidentifier si on veut rajouter la possibilité de delete
             return Json( new { id = topID , url = ImgSrc } );
 
 
