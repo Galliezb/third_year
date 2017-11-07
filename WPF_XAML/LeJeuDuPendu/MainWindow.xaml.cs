@@ -111,6 +111,11 @@ namespace LeJeuDuPendu {
 
         private void SaveDifficulty ( object sender , RoutedEventArgs e ) {
 
+            MessageBox.Show( "saveDifficulty" + sender.ToString() );
+
+            // Stop la propagation
+            //e.Handled = true;
+
             // En travaillant sur le click plutot que sur le checked on ne soulevera pas 
             // l'evènement checked. De ce fait pas de stackOverflow.
             // Il suffit ensuite de sauvegarder quel element est Ischecked="true"
@@ -128,14 +133,14 @@ namespace LeJeuDuPendu {
             if ( LMI.Count > 0 ) {
                 foreach ( MenuItem mi in LMI ) {
 
-                    /// vior au dessus comment changer ceci
-                    mi.Checked -= SaveDifficulty;
+                    // voir au dessus comment changer ceci
+                    //mi.Checked -= SaveDifficulty; // supprimé par e.Handled = false;
                     if ( whoIsClicked != int.Parse( mi.Name.Substring( 10 ) ) ) {
                         mi.IsChecked = false;
                     } else {
                         mi.IsChecked = true;
                     }
-                    mi.Checked += SaveDifficulty;
+                    //mi.Checked += SaveDifficulty; // supprimé par e.Handled = false;
 
                 }
             }
@@ -144,30 +149,14 @@ namespace LeJeuDuPendu {
 
             // mets à jour la difficulté du jeu
             switch ( whoIsClicked ) {
-                case 0:
-                    gameDifficulty = 5;
-                    break;
-                case 1:
-                    gameDifficulty = 7;
-                    break;
-                case 2:
-                    gameDifficulty = 9;
-                    break;
-                case 3:
-                    gameDifficulty = 11;
-                    break;
-                case 4:
-                    gameDifficulty = 13;
-                    break;
-                case 5:
-                    gameDifficulty = 15;
-                    break;
-                case 6:
-                    gameDifficulty = 17;
-                    break;
-                case 7:
-                    gameDifficulty = 18;
-                    break;
+                case 0:gameDifficulty = 5;break;
+                case 1:gameDifficulty = 7;break;
+                case 2:gameDifficulty = 9;break;
+                case 3:gameDifficulty = 11;break;
+                case 4:gameDifficulty = 13;break;
+                case 5:gameDifficulty = 15;break;
+                case 6:gameDifficulty = 17;break;
+                case 7:gameDifficulty = 18;break;
             }
 
         }
