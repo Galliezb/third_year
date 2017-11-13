@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Article", "Article\Article.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "modelDansUneVue", "modelDansUneVue\modelDansUneVue.csproj", "{F6FEA06B-02CC-4D13-8079-848C1A49B0F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lesFiltres", "lesFiltres\lesFiltres.csproj", "{2D009D29-14FD-4044-A36A-E8E59BD66F15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{F6FEA06B-02CC-4D13-8079-848C1A49B0F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6FEA06B-02CC-4D13-8079-848C1A49B0F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6FEA06B-02CC-4D13-8079-848C1A49B0F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D009D29-14FD-4044-A36A-E8E59BD66F15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D009D29-14FD-4044-A36A-E8E59BD66F15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D009D29-14FD-4044-A36A-E8E59BD66F15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D009D29-14FD-4044-A36A-E8E59BD66F15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

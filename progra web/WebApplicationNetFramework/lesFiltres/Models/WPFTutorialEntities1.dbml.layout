@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="WPFTutorialEntities1">
+  <DataContextMoniker Name="/WPFTutorialEntities1DataContext" />
+  <nestedChildShapes>
+    <classShape Id="07f87e42-78aa-4ac9-80fe-7aa07ed1b7a7" absoluteBounds="1.625, 1.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/WPFTutorialEntities1DataContext/Users" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c3587cc6-aec4-4133-8462-2c72a4c4a50e" absoluteBounds="1.6400000000000001, 1.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

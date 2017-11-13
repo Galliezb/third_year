@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Styles/StyleSheet1.css" rel="stylesheet" />
+    <title>Login</title>
+</head>
+<body>
+    <div id="cont">
+        <h1>Identification : </h1>
+        <form name="LoginForm" method="post" action="/Home/Login">
+            <input type="text" placeholder="Name" name="UserName" value="" />
+            <input type="password" placeholder="Password" name="Passwd" value="" />
+            @*<input type="hidden" name="ReturnUrl" value="@Request.Params["ReturnUrl"]" />*@
+            @* Ou *@
+            <input type="hidden" name="ReturnUrl" value="@ViewBag.ReturnUrl" />
+            <input type="submit" value="Submit" />
+        </form>
+    </div> 
+</body>
+</html>

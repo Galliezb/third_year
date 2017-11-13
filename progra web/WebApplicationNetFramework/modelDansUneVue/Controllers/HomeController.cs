@@ -28,6 +28,11 @@ namespace modelDansUneVue.Controllers
 
         // les filtres => []
         [OutputCache(VaryByParam = "test", Duration = 10)] // cache 10 sec
+        // varyByParam
+        // VaryByCustum
+        // VaryByHeader
+        // Location
+        // SqlDependency permettra de dévalider la cache par rapport aux datas SQL
         // tester l'affichage client avec un Datetime.now.toLongTimeString();
         // [Authorize] // Permet de définir l'accès qu'aux personnes identifiées
         // les accès se retrouvent dans le web.config
