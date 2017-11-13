@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarreDeChargement", "..\Bar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LesCommandes", "LesCommandes\LesCommandes.csproj", "{E60AF9EB-7F92-4777-98E3-E39A5348779A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binding", "Binding\Binding.csproj", "{1D7EE81E-4151-47FD-B071-A49802CBE005}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LesStyles", "Binding\LesStyles.csproj", "{1D7EE81E-4151-47FD-B071-A49802CBE005}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

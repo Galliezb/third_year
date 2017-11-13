@@ -7,20 +7,58 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
+        <!--même principe qu'en CSS niveau héritage et surcharge -->
         <SolidColorBrush x:Key="uniqueCle" Color="red"></SolidColorBrush>
+        <Style TargetType="TextBox">
+            <!-- Les triggers permettent de mettre des conditions sur les styles
+                Ex : un compteur qui change de couleur vers le rouge quand il approche 0
+            -->
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="true">
+                    <Setter Property="Background" Value="Red"></Setter>
+                </Trigger>
+                <!--<DataTrigger Binding="{Binding Path=IsChecked, ElementName=testTrigger}" Value="true">
+                    Lié à un checkbox, permet de vérifier s'il est checké
+                permet par exemple de vérifier qu'une checkbox contient le nom XXXX
+                </DataTrigger>-->
+                <DataTrigger Binding="{Binding Path=Text, ElementName=testTrigger}" Value="test">
+                    <Setter Property="Background" Value="#FF00FF0C"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+            <Setter Property="Foreground" Value="Blue"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+        <Style TargetType="Border">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=IsFocused, ElementName=testTrigger}" Value="true">
+                    <Setter Property="BorderBrush" Value="red"></Setter>
+                    <Setter Property="BorderThickness" Value="3"></Setter>
+                    <Setter Property="Background" Value="Orange"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
     </Window.Resources>
     <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal">
             <Label Name="lbNom" Foreground="{StaticResource ResourceKey=uniqueCle}">Nom : </Label>
-            <TextBox Name="Nom"></TextBox>
+            <TextBox Name="Nom" Width="50"></TextBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label Name="lbPrenom" Foreground="{StaticResource ResourceKey=uniqueCle}">Prénom : </Label>
-            <TextBox Name="Prenom"></TextBox>
+            <TextBox Name="Prenom" Width="50"></TextBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <Label Name="lbTel" Foreground="{StaticResource ResourceKey=uniqueCle}">Tél : </Label>
-            <TextBox Name="Telephone"></TextBox>
+            <Label Name="lbTel">Tél : </Label>
+            <TextBox Name="Telephone" Width="50"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Name="Blablabla">Blablabla :</Label>
+            <TextBox Name="Blablabla2" Width="50"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>Test triggers</Label>
+            <TextBox Name="testTrigger" Width="50" ></TextBox>
         </StackPanel>
     </StackPanel>
 </Window>
