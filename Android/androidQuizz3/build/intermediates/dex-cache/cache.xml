@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.3.1_ffebb1d05a37a48ad77003f62a9987a672074d87.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.3.1_794f5972023941bcd9fc9d9adcdbdae1cf85c71d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\super\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\pre-dexed\debug\support-annotations-25.3.1_915326c1b1c1d9159fddf1315186c12230ff0967.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.3.1_7f8603e338b89b83d1e714642b0b5e3b19c9ec1a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.3.1_172ab12151b72bcaeff525a3b55a18a93fcee32b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.3.1_2513fa7adf712a91a5aa032867c7094c7b928656.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.3.1_2715e62ee0a0baedd1b689a81103aa9f9d4fcfdd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.3.1_8c3921f50c75facf63f42ef1c3d04ee74e7101e2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.3.1_b0b7132a5cfd0d4ab763987876d322a4978f59b4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\bruno\githubServer\third_year\Android\androidQuizz3\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.3.1_0cb731bd46087e1faa990ea82a714d9e25c55b85.jar" />
+    </item>
+
+</items>

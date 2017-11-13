@@ -1,4 +1,8 @@
-﻿@using Article.Models;
+﻿@{
+    string r = "0";
+    string r2 = "0";
+};
+@using Article.Models;
 @model List<Articles>
 @{
     Layout = null;
@@ -31,15 +35,19 @@
         </form>
     </div>
     <div id="conteneurAllArticle">
-        @foreach ( Articles a in Model ) {
-            <div>
-                <div id="photoArticle">
-                    <img src="@a.ImgSrc" />
+        @foreach (Articles a in Model) {
+                r = new Random().Next( 500, 2000 ).ToString();
+                r2 = new Random().Next( 0, 100 ).ToString();
+            <div class="conteneur1Article">
+                <div class="conteneurArticle" id="photoArticle @a.IdImg">
+                    <img class="photoArticle" src="@a.ImgSrc" />
+                    <div id="descriptif@a.ImgSrc" class="descriptif">@a.Descriptif</div>
                 </div>
                 <div id="allDataArticle">
                     <div>Nom :@a.Nom<br /></div>
-                    <div>Descriptif :@a.Descriptif<br /></div>
                     <div>Promotion :@a.Promo<br /></div>
+                    <div>Prix :@r<br /></div>
+                    <div>Quantité :@r2<br /></div>
                 </div>
             </div>
         }

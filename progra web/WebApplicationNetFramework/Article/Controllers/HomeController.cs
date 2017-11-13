@@ -13,7 +13,8 @@ namespace Article.Controllers
     public class HomeController : Controller
     {
 
-        string strConnection = @"Server=127.0.0.1\SQLEXPRESS; Database = labo_sql_connection; Uid = labo; Password = 123";
+        //string strConnection = @"Server=127.0.0.1\SQLEXPRESS; Database = labo_sql_connection; Uid = labo; Password = 123";
+        string strConnection = @"Server=127.0.0.1\SELOCALPORTABLE; Database = labo_article; Uid = labo; Password = 123";
         List<Articles> listArticle = new List<Articles>();
 
         // GET: Home
@@ -116,6 +117,9 @@ namespace Article.Controllers
             // on renvoye l'image pour la prévisualisation
             string base64 = Convert.ToBase64String( bytes );
             string ImgSrc = string.Format( "data:image/jpg;base64,{0}" , base64 );
+            // on en version corrigée :
+            // byte [] monTabByte = ....
+            // return File ( monTabByte, "image/jpg" );
 
             // top id = uniqueidentifier si on veut rajouter la possibilité de delete
             return Json( new { id = topID , url = ImgSrc } );
