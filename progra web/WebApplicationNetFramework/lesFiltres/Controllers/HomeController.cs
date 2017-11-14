@@ -25,21 +25,21 @@ namespace lesFiltres.Controllers
         [AllowAnonymous]
         [HttpPost]
         public ActionResult Login(User tempUser, string ReturnUrl) {
-            //WPFTutorialEntities1DataContext WPFUsers = new WPFTutorialEntities1DataContext();
-            //if (ModelState.IsValid) {
+            WPFTutorialEntities1DataContext WPFUsers = new WPFTutorialEntities1DataContext();
+            if ( ModelState.IsValid ) {
 
-            //    int result = WPFUsers.CheckIfThisUserExist( tempUser.UserName, tempUser.Passwd ).FirstOrDefault() ?? 0;
-            //    if (result == 1) {
-            //        Session["User"] = tempUser;
-            //        FormsAuthentication.SetAuthCookie( tempUser.UserName, false );
-            //        if (ReturnUrl != null) return Redirect( ReturnUrl );
-            //        else return Redirect( FormsAuthentication.DefaultUrl );
-            //    } else {
-            //        ModelState.AddModelError( "", "Log In Failed" );
-            //    }
-            //} else {
-            //    ModelState.AddModelError( "", "Log In Failed" );
-            //}
+                int result = WPFUsers.CheckIfThisUserExist( tempUser.UserName , tempUser.Passwd ).FirstOrDefault().Column1 ?? 0;
+                if ( result == 1 ) {
+                    Session["User"] = tempUser;
+                    FormsAuthentication.SetAuthCookie( tempUser.UserName , false );
+                    if ( ReturnUrl != null ) return Redirect( ReturnUrl );
+                    else return Redirect( FormsAuthentication.DefaultUrl );
+                } else {
+                    ModelState.AddModelError( "" , "Log In Failed" );
+                }
+            } else {
+                ModelState.AddModelError( "" , "Log In Failed" );
+            }
 
             // dans le cas ou on va directement sur la page de login et que ReturnUrl est null
             if (ReturnUrl == null) {
