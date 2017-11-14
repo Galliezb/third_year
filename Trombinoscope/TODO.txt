@@ -1,0 +1,7 @@
+﻿* Liste des utilisateurs contenant photo, non prénom sur la gauche.
+* Sur la partie droite, toutes les infos lorsqu'on sélectionne un user (userID, nom, prenom, mail, tel, addr, rue etc...)
+
+* Quand on change le focus sur l'element de la liste, on change l'Id sélectionné et on l'envoi vers la BDD
+pour récupérer toutes les informations de l'userID associé
+
+* utiliser du Linq et de l'entity framework.

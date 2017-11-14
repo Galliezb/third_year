@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Binding"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        >
     <Window.Resources>
         <!--même principe qu'en CSS niveau héritage et surcharge -->
         <SolidColorBrush x:Key="uniqueCle" Color="red"></SolidColorBrush>
@@ -42,7 +44,7 @@
     <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal">
             <Label Name="lbNom" Foreground="{StaticResource ResourceKey=uniqueCle}">Nom : </Label>
-            <TextBox Name="Nom" Width="50"></TextBox>
+            <TextBox Name="Nom" Width="173" Text="{Binding Path=Nom}"></TextBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label Name="lbPrenom" Foreground="{StaticResource ResourceKey=uniqueCle}">Prénom : </Label>
