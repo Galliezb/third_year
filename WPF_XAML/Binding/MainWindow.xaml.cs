@@ -19,6 +19,7 @@ namespace Binding {
     /// </summary>
     public partial class MainWindow : Window {
         public MainWindow() {
+            User u = new User { Nom = "dupond", Prenom = "toto", DateNaissance = DateTime.Now };
             InitializeComponent();
         }
     }
