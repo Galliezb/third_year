@@ -67,5 +67,22 @@ public class QuestionActivity extends AppCompatActivity {
         finish();
     }
 
-
+//    @Override
+//    protected void onSaveInstanceState(Bundle outState) {
+//        // ce qui est sauvegardé est justement reçu en paramètre dans le onCreate
+//        QuestionModel questionRecupere = (QuestionModel) getIntent().getSerializableExtra("recupereQuestion");
+//
+//        if(questionRecupere == null){
+//            throw new InternalGameException("No question passed to QuestionModel activity");
+//        }
+//
+//        setQuestion(questionRecupere);
+//        super.onSaveInstanceState(outState);
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        getIntent().putExtra("recupereQuestion",question);
+//        super.onStop();
+//    }
 }

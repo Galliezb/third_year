@@ -1,6 +1,8 @@
 package fpluquet.be.quizz.views;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,12 +14,18 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+import javax.xml.datatype.Duration;
+
 import fpluquet.be.quizz.R;
 import fpluquet.be.quizz.models.QuestionModel;
+
+import static android.widget.Toast.LENGTH_LONG;
+import static android.widget.Toast.LENGTH_SHORT;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         questions = new ArrayList<>();
 
         // todo : au lieu de ces questions, lisez les questions depuis le fichier questions.txt dans le dossier raw des ressources
+        // DONE
 
 //        // add a first question
 //        QuestionModel question = new QuestionModel();
@@ -58,12 +67,49 @@ public class MainActivity extends AppCompatActivity {
 //
 
 
-            BufferedReader reader = new BufferedReader(getResources().openRawResource(R.raw.questions));
-            String line = reader.readLine();
-            while(line != null){
-                Log.d("StackOverflow", line);
-                line = reader.readLine();
+        try {
+            Resources res = getResources();
+            InputStream in_s = res.openRawResource(R.raw.questions);
+
+            byte[] b = new byte[in_s.available()];
+            in_s.read(b);
+            String notreFichier = new String(b);
+
+            String[] as = notreFichier.split("\r\n");
+
+            int i =0;
+            QuestionModel tmp = new QuestionModel();
+            //Toast.makeText(this,"LENGTH => "+as.length,LENGTH_SHORT).show();
+            for (int j = 0; j<as.length; j++){
+
+                //Toast.makeText(this,"-"+as[j]+"-"+as[j].length(),LENGTH_SHORT).show();
+                if ( i == 0 ){
+
+                    tmp.setText(""+as[j]);
+                    i++;
+
+                } else if ( !as[j].isEmpty() ){
+
+                    //Toast.makeText(this,"=> "+as[j],LENGTH_SHORT).show();
+                    tmp.addAnswer(""+as[j]);
+
+                }
+                if ( j == as.length-1 || ( !as[j+1].isEmpty() && as[j].isEmpty() ) ){
+                    //Toast.makeText(this,"["+j+"] ADD QUESTION : " + tmp.getText(),LENGTH_SHORT).show();
+                    i = 0;
+                    questions.add(tmp);
+                    tmp = new QuestionModel();
+
+                }
+//                if ( !as[j+1].isEmpty() && as[j].isEmpty() ){
+//                    Toast.makeText(this,"["+j+"]PUTAIN CA MARCHE " + tmp.getText(),LENGTH_SHORT).show();
+//                }
+
             }
+
+        } catch (Exception e) {
+            Toast.makeText(this,e.toString(),LENGTH_LONG);
+        }
 
         // initialize the current question index
         currentQuestionIndex = -1;
@@ -97,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
             launchNextQuestion();
         }
     }
+
 
     // todo : retenez la question courante au cas où l'activité est relancée (rotation)
     // todo : ajoutez une fonctionnalité "continuer la dernière partie" (le numéro de la question courante est alors sauvé dans un fichier)
