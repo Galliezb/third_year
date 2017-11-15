@@ -102,6 +102,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\MyAuthorize.cs" />
+    <Compile Include="Models\MyMemberShipProvider.cs" />
+    <Compile Include="Models\MyRoleProvider.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\WPFTutorialEntities1.designer.cs">
       <AutoGen>True</AutoGen>

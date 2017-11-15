@@ -14,4 +14,17 @@
       <Column Name="" Member="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.ValidateUser" Method="ValidateUser">
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(1)" />
+    <Parameter Name="Passwd" Parameter="passwd" Type="System.String" DbType="NVarChar(1)" />
+    <ElementType Name="ValidateUserResult">
+      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetRoleOfUser" Method="GetRoleOfUser">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(1)" />
+    <ElementType Name="GetRoleOfUserResult">
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>
