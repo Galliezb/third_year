@@ -24,6 +24,7 @@
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Margin="0,5,0,0" Text="Nom :" VerticalAlignment="Center" />
                                             <TextBlock Text="{Binding Nom}" VerticalAlignment="Center" />
+                                            <TextBlock Name="UserId" Visibility="Hidden" Text="{Binding UserId}" VerticalAlignment="Center" />
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Margin="0,5,0,0" Text="Prenom :" VerticalAlignment="Center" />
@@ -39,27 +40,27 @@
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Nom : "></TextBlock>
-                    <TextBlock Text="{Binding Path=UserSelected, ElementName=Nom}"></TextBlock>
+                    <TextBlock Name="Nom" Text="{Binding Path=UserSelected.Nom}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Prénom : "></TextBlock>
-                    <TextBlock Text="{Binding Path=UserSelected, ElementName=Prenom}"></TextBlock>
+                    <TextBlock Name="Prenom" Text="{Binding Path=UserSelected.Prenom}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Email : "></TextBlock>
-                    <TextBlock Text="{Binding Path=UserSelected, ElementName=Email}"></TextBlock>
+                    <TextBlock Name="Email" Text="{Binding Path=UserSelected.Email}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Tel : "></TextBlock>
-                    <TextBlock Text="{Binding Path=UserSelected, ElementName=Tel}"></TextBlock>
+                    <TextBlock Name="Tel" Text="{Binding Path=UserSelected.tel}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Addresse : "></TextBlock>
-                    <TextBlock Text="{Binding Path=UserSelected, ElementName=rue}"></TextBlock>
+                    <TextBlock Name="Rue" Text="{Binding Path=UserSelected.Rue}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Nom : "></TextBlock>
-                    <TextBlock Text="{Binding Path=UserSelected, ElementName=Nom}"></TextBlock>
+                    <TextBlock Name="Nom2" Text="{Binding Path=UserSelected.Nom}"></TextBlock>
                 </StackPanel>
 
             </StackPanel>

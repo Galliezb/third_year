@@ -33,5 +33,16 @@ namespace Trombinoscope.Properties {
                 return ((string)(this["trombinoscopeConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=127.0.0.1\\SQLEXPRESS;Initial Catalog=labo;Persist Security Info=True;" +
+            "User ID=labo;Password=123")]
+        public string laboConnectionString {
+            get {
+                return ((string)(this["laboConnectionString"]));
+            }
+        }
     }
 }

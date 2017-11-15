@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace Trombinoscope {
     public partial class MainWindow : Window {
 
         public List<GetListOfUsersResult> UsersList { get; set; }
-        public GetAllFromUserIdResult UserSelected { get; set; }
+        public GetAllFromUserIdResult UserSelected { get; set; } = new GetAllFromUserIdResult();
 
         public MainWindow() {
             InitializeComponent();
@@ -34,7 +35,19 @@ namespace Trombinoscope {
             Console.WriteLine( "Event recepetion" );
             ListBox lb = (ListBox)sender;
             GetListOfUsersResult result = (GetListOfUsersResult)lb.SelectedItem;
-            UserSelected = new  User2DataContext().GetAllFromUserId(result.Nom,result.Prenom).FirstOrDefault<GetAllFromUserIdResult>();
+
+            // testons avec les setters
+            //UserSelected = new  User2DataContext().GetAllFromUserId(result.UserId).FirstOrDefault<GetAllFromUserIdResult>();
+            GetAllFromUserIdResult tmp = new User2DataContext().GetAllFromUserId(result.UserId).FirstOrDefault<GetAllFromUserIdResult>();
+
+            UserSelected.Nom = tmp.Nom;
+            UserSelected.Prenom = tmp.Prenom;
+            UserSelected.Email = tmp.Email;
+            UserSelected.tel = tmp.tel;
+            UserSelected.Rue = tmp.Rue;
+            UserSelected.codePostal = tmp.codePostal;
+            UserSelected.Ville = tmp.Ville;
+
         }
     }
 }
