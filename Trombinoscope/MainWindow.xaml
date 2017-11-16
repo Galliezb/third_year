@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525"
         >
+    <!--Va lier le traitement de la ressource à la classe PhotoConverter avec l'interface IValueConverter-->
+    <!--<Window.Resources>
+        <local:PhotoConverter x:Key="PhotoConverter"></local:PhotoConverter>
+    </Window.Resources>-->
     <Grid>
         <StackPanel Orientation="Horizontal">
             <StackPanel Orientation="Vertical">
@@ -17,7 +21,8 @@
                                 <StackPanel Orientation="Horizontal">
                                     <StackPanel Width="100" Orientation="Vertical">
                                         <Border Margin="5" Width="54" Height="81" BorderBrush="blue" BorderThickness="1">
-                                            <Image VerticalAlignment="Bottom" HorizontalAlignment="Center" Source=""></Image>
+                                            <!--<Image VerticalAlignment="Bottom" HorizontalAlignment="Center" Source="{Binding Path=Photo, Converter={StaticResource PhotoConverter}}"></Image>-->
+                                            <Image VerticalAlignment="Bottom" HorizontalAlignment="Center"></Image>
                                         </Border>
                                     </StackPanel>
                                     <StackPanel Width="100" Orientation="Vertical">

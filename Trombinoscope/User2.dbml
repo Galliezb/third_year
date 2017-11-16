@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="labo" Class="User2DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=127.0.0.1\SQLEXPRESS;Initial Catalog=labo;Persist Security Info=True;User ID=labo" SettingsObjectName="Trombinoscope.Properties.Settings" SettingsPropertyName="laboConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=127.0.0.1\SELOCALPORTABLE;Initial Catalog=labo;Persist Security Info=True;User ID=labo" SettingsObjectName="Trombinoscope.Properties.Settings" SettingsPropertyName="trombinoscopeConnectionString" Provider="System.Data.SqlClient" />
   <Function Name="dbo.GetAllFromUserId" Method="GetAllFromUserId">
     <Parameter Name="userid" Type="System.Int32" DbType="Int" />
     <ElementType Name="GetAllFromUserIdResult">

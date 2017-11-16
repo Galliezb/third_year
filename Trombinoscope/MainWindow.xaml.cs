@@ -49,5 +49,14 @@ namespace Trombinoscope {
             UserSelected.Ville = tmp.Ville;
 
         }
+
+        // TODO
+        // * Modfier les données d'un utilisateur sélectionné
+        // * Ajouter un nouvelle utilisateur avec une nouvelle vue + Photo
+        // Ex 2 Données complètes, listes et détails automatique ( ce qui est déjà présente non ? )
+        // TODO
+        // * Check Source="{Binding Path=Photo,Converter={}}"
+        // ajouter une photo directement en SQL :
+        // SELECT MyImage.* from Openrowset(Bulk 'C:\data\trump.png', Single_Blob MyImage) WHERE ........
     }
 }

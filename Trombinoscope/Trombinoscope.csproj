@@ -62,6 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PhotoConverter.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="User.cs" />
     <Compile Include="User2.designer.cs">

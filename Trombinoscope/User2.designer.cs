@@ -33,7 +33,7 @@ namespace Trombinoscope
     #endregion
 		
 		public User2DataContext() : 
-				base(global::Trombinoscope.Properties.Settings.Default.laboConnectionString, mappingSource)
+				base(global::Trombinoscope.Properties.Settings.Default.trombinoscopeConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -79,10 +79,8 @@ namespace Trombinoscope
 	
 	public partial class GetAllFromUserIdResult:INotifyPropertyChanged
 	{
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private int _UserId;
+		
+		private int _UserId;
 		
 		private string _Nom;
 		
@@ -100,9 +98,10 @@ namespace Trombinoscope
 		
 		private System.Data.Linq.Binary _Photo;
 
-        private void OnPropertyChanged ( String property ) {
-            if ( PropertyChanged != null ) {
-                PropertyChanged( this , new PropertyChangedEventArgs( property ) );
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(String property) {
+            if (PropertyChanged != null) {
+                PropertyChanged( this, new PropertyChangedEventArgs( property ) );
             }
         }
 
@@ -122,7 +121,8 @@ namespace Trombinoscope
 				if ((this._UserId != value))
 				{
 					this._UserId = value;
-				}
+                    OnPropertyChanged( "UserId" );
+                }
 			}
 		}
 		
@@ -139,6 +139,7 @@ namespace Trombinoscope
 				{
 					this._Nom = value;
                     OnPropertyChanged( "Nom" );
+
                 }
 			}
 		}
@@ -261,8 +262,7 @@ namespace Trombinoscope
                 }
 			}
 		}
-
-    }
+	}
 	
 	public partial class GetListOfUsersResult
 	{
