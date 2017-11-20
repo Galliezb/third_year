@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "modelDansUneVue", "modelDan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lesFiltres", "lesFiltres\lesFiltres.csproj", "{2D009D29-14FD-4044-A36A-E8E59BD66F15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterPage", "MasterPage\MasterPage.csproj", "{3EB6A99A-83B3-43E9-9A5B-0B64851EC96D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{2D009D29-14FD-4044-A36A-E8E59BD66F15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D009D29-14FD-4044-A36A-E8E59BD66F15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D009D29-14FD-4044-A36A-E8E59BD66F15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EB6A99A-83B3-43E9-9A5B-0B64851EC96D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EB6A99A-83B3-43E9-9A5B-0B64851EC96D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EB6A99A-83B3-43E9-9A5B-0B64851EC96D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EB6A99A-83B3-43E9-9A5B-0B64851EC96D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

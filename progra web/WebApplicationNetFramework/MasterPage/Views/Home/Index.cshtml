@@ -1,0 +1,22 @@
+﻿@using MasterPage.Models
+@model List<GetAllArticlesResult>
+@{
+    ViewBag.Title = "TEST TITRE";
+
+    Layout = "~/Views/_test_Page_Disposition_01.cshtml";
+}
+<h2>Index</h2>
+
+
+@foreach (var r in Model) {
+
+    @Html.Partial( "~/View/Home/_PartialPage1.cshtml", r.id );
+    // attention les paramètres doivent avoir le même nom... encore....
+    @Html.Action( "ArticleItem", r.id );
+
+}
+
+
+@section footer {
+    <div id="footer">Articles listés : <span id="NbArticleListé">@ViewBag.number</span></div>
+}

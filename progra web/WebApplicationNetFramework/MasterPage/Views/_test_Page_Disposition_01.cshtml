@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Style/StyleSheet1.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="entete">
+        <img src="~/img/asp-net.png" />
+        <span> Blablabla Compagnie</span>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    @RenderSection( "footer", true );
+</body>
+</html>

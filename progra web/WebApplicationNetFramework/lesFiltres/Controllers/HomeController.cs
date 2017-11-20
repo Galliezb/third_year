@@ -84,6 +84,13 @@ namespace lesFiltres.Controllers
 
         }
 
+        //Permet de généré une erreur qui renverrait par la page Error.cshtml plutôt qu'une page par défaut.
+        //[HandleError(View = "Error")]
+
+
+        
+
+
         [Authorize]
         public ActionResult PrivateEnv() {
             return View( "vu" );

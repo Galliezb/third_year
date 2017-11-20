@@ -13,8 +13,7 @@ namespace Article.Controllers
     public class HomeController : Controller
     {
 
-        //string strConnection = @"Server=127.0.0.1\SQLEXPRESS; Database = labo_sql_connection; Uid = labo; Password = 123";
-        string strConnection = @"Server=127.0.0.1\SELOCALPORTABLE; Database = labo_article; Uid = labo; Password = 123";
+        string strConnection = @"Server=127.0.0.1\SQLEXPRESS; Database = labo; Uid = labo; Password = 123";
         List<Articles> listArticle = new List<Articles>();
 
         // GET: Home
@@ -97,10 +96,10 @@ namespace Article.Controllers
             SqlCommand myCmd = new SqlCommand {
                 Connection = myConnection ,
                 CommandType = CommandType.StoredProcedure ,
-                CommandText = "addImg"
+                CommandText = "addImgToImgArticles"
             };
 
-            myCmd.Parameters.AddWithValue( "@img" , bytes );
+            myCmd.Parameters.AddWithValue( "@imgSend", bytes );
             myCmd.ExecuteNonQuery();
 
             // récupère le dernier id ( ouep je sais c'est crade mais je trouve pas encore comment
@@ -109,7 +108,7 @@ namespace Article.Controllers
             myCmd.Parameters.Clear();
             SqlDataReader monReader = myCmd.ExecuteReader();
             monReader.Read();
-            int topID = int.Parse( monReader["id"].ToString() );
+            int topID = int.Parse( monReader["idImg"].ToString() );
 
             monReader.Close();
             myConnection.Close();
