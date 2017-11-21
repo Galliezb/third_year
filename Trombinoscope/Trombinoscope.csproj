@@ -62,6 +62,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Ajouter.xaml.cs">
+      <DependentUpon>Ajouter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PhotoConverter.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="User.cs" />
@@ -70,6 +73,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>User2.dbml</DependentUpon>
     </Compile>
+    <Page Include="Ajouter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525"
         >
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Width" Value="150"></Setter>
+            <Setter Property="Margin" Value="5,5,5,5"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+        </Style>
+    </Window.Resources>
     <!--Va lier le traitement de la ressource à la classe PhotoConverter avec l'interface IValueConverter-->
     <!--<Window.Resources>
         <local:PhotoConverter x:Key="PhotoConverter"></local:PhotoConverter>
@@ -41,33 +52,43 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                <StackPanel Orientation="Horizontal">
+                    <Button Width="150" Content="Ajouter" Click="AddUser"></Button>
+                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical" Margin="0,10,0,-0.2">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Nom : "></TextBlock>
-                    <TextBlock Name="Nom" Text="{Binding Path=UserSelected.Nom}"></TextBlock>
+                    <TextBox Name="Nom" Text="{Binding Path=UserSelected.Nom}"></TextBox>
+                    <TextBox Name="ID" Text="{Binding Path=UserSelected.UserId}" Visibility="Hidden"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Prénom : "></TextBlock>
-                    <TextBlock Name="Prenom" Text="{Binding Path=UserSelected.Prenom}"></TextBlock>
+                    <TextBox Name="Prenom" Text="{Binding Path=UserSelected.Prenom}"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Email : "></TextBlock>
-                    <TextBlock Name="Email" Text="{Binding Path=UserSelected.Email}"></TextBlock>
+                    <TextBox Name="Email" Text="{Binding Path=UserSelected.Email}"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Tel : "></TextBlock>
-                    <TextBlock Name="Tel" Text="{Binding Path=UserSelected.tel}"></TextBlock>
+                    <TextBox Name="Tel" Text="{Binding Path=UserSelected.Tel}"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Addresse : "></TextBlock>
-                    <TextBlock Name="Rue" Text="{Binding Path=UserSelected.Rue}"></TextBlock>
+                    <TextBox Name="Adresse" Text="{Binding Path=UserSelected.Adresse}"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Nom : "></TextBlock>
-                    <TextBlock Name="Nom2" Text="{Binding Path=UserSelected.Nom}"></TextBlock>
+                    <TextBlock Text="Code Postal : "></TextBlock>
+                    <TextBox Name="CodePostal" Text="{Binding Path=UserSelected.CodePostal}"></TextBox>
                 </StackPanel>
-
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Ville : "></TextBlock>
+                    <TextBox Name="Ville" Text="{Binding Path=UserSelected.Ville}"></TextBox>
+                </StackPanel>
+                <StackPanel>
+                    <Button Width="150" Content="Updater" Click="UpdateDbUser"></Button>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
     </Grid>

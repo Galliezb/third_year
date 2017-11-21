@@ -30,10 +30,13 @@ namespace Trombinoscope
 		
     #region Définitions de méthodes d'extensibilité
     partial void OnCreated();
+    partial void InsertUsers(Users instance);
+    partial void UpdateUsers(Users instance);
+    partial void DeleteUsers(Users instance);
     #endregion
 		
 		public User2DataContext() : 
-				base(global::Trombinoscope.Properties.Settings.Default.trombinoscopeConnectionString, mappingSource)
+				base(global::Trombinoscope.Properties.Settings.Default.laboConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -62,23 +65,48 @@ namespace Trombinoscope
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetAllFromUserId")]
-		public ISingleResult<GetAllFromUserIdResult> GetAllFromUserId([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userid)
+		public System.Data.Linq.Table<Users> Users
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userid);
-			return ((ISingleResult<GetAllFromUserIdResult>)(result.ReturnValue));
+			get
+			{
+				return this.GetTable<Users>();
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetAllFromUserId")]
+		public ISingleResult<Users> GetAllFromUserId([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserId", DbType="Int")] System.Nullable<int> userId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userId);
+			return ((ISingleResult<Users>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetListOfUsers")]
-		public ISingleResult<GetListOfUsersResult> GetListOfUsers()
+		public ISingleResult<Users> GetListOfUsers()
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<GetListOfUsersResult>)(result.ReturnValue));
+			return ((ISingleResult<Users>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateUser")]
+		public int UpdateUser([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IdUser", DbType="Int")] System.Nullable<int> idUser, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Nom", DbType="NVarChar(1)")] string nom, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Prenom", DbType="NVarChar(1)")] string prenom, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(1)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tel", DbType="NVarChar(1)")] string tel, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Adresse", DbType="NVarChar(1)")] string adresse, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CodePostal", DbType="NVarChar(1)")] string codePostal, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Ville", DbType="NVarChar(1)")] string ville)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idUser, nom, prenom, email, tel, adresse, codePostal, ville);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.AddUser")]
+		public int AddUser([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Nom", DbType="NVarChar(50)")] string nom, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Prenom", DbType="NVarChar(50)")] string prenom, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(50)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tel", DbType="NVarChar(50)")] string tel, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Adresse", DbType="NVarChar(50)")] string adresse, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CodePostal", DbType="NVarChar(50)")] string codePostal, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Ville", DbType="NVarChar(50)")] string ville)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), nom, prenom, email, tel, adresse, codePostal, ville);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
-	public partial class GetAllFromUserIdResult:INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
+	public partial class Users : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _UserId;
 		
@@ -88,28 +116,46 @@ namespace Trombinoscope
 		
 		private string _Email;
 		
-		private string _tel;
+		private string _Tel;
 		
-		private string _Rue;
+		private string _Adresse;
 		
-		private string _codePostal;
+		private string _CodePostal;
 		
 		private string _Ville;
 		
-		private System.Data.Linq.Binary _Photo;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(String property) {
-            if (PropertyChanged != null) {
-                PropertyChanged( this, new PropertyChangedEventArgs( property ) );
-            }
-        }
-
-        public GetAllFromUserIdResult()
+		private System.Nullable<int> _IdImg;
+		
+    #region Définitions de méthodes d'extensibilité
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    partial void OnNomChanging(string value);
+    partial void OnNomChanged();
+    partial void OnPrenomChanging(string value);
+    partial void OnPrenomChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnTelChanging(string value);
+    partial void OnTelChanged();
+    partial void OnAdresseChanging(string value);
+    partial void OnAdresseChanged();
+    partial void OnCodePostalChanging(string value);
+    partial void OnCodePostalChanged();
+    partial void OnVilleChanging(string value);
+    partial void OnVilleChanged();
+    partial void OnIdImgChanging(System.Nullable<int> value);
+    partial void OnIdImgChanged();
+    #endregion
+		
+		public Users()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int UserId
 		{
 			get
@@ -120,9 +166,12 @@ namespace Trombinoscope
 			{
 				if ((this._UserId != value))
 				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
 					this._UserId = value;
-                    OnPropertyChanged( "UserId" );
-                }
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
 			}
 		}
 		
@@ -137,10 +186,12 @@ namespace Trombinoscope
 			{
 				if ((this._Nom != value))
 				{
+					this.OnNomChanging(value);
+					this.SendPropertyChanging();
 					this._Nom = value;
-                    OnPropertyChanged( "Nom" );
-
-                }
+					this.SendPropertyChanged("Nom");
+					this.OnNomChanged();
+				}
 			}
 		}
 		
@@ -155,9 +206,12 @@ namespace Trombinoscope
 			{
 				if ((this._Prenom != value))
 				{
+					this.OnPrenomChanging(value);
+					this.SendPropertyChanging();
 					this._Prenom = value;
-                    OnPropertyChanged( "Prenom" );
-                }
+					this.SendPropertyChanged("Prenom");
+					this.OnPrenomChanged();
+				}
 			}
 		}
 		
@@ -172,60 +226,72 @@ namespace Trombinoscope
 			{
 				if ((this._Email != value))
 				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
 					this._Email = value;
-                    OnPropertyChanged( "Email" );
-                }
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tel", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string tel
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tel", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Tel
 		{
 			get
 			{
-				return this._tel;
+				return this._Tel;
 			}
 			set
 			{
-				if ((this._tel != value))
+				if ((this._Tel != value))
 				{
-					this._tel = value;
-                    OnPropertyChanged( "tel" );
-                }
+					this.OnTelChanging(value);
+					this.SendPropertyChanging();
+					this._Tel = value;
+					this.SendPropertyChanged("Tel");
+					this.OnTelChanged();
+				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rue", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Rue
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adresse", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Adresse
 		{
 			get
 			{
-				return this._Rue;
+				return this._Adresse;
 			}
 			set
 			{
-				if ((this._Rue != value))
+				if ((this._Adresse != value))
 				{
-					this._Rue = value;
-                    OnPropertyChanged( "Rue" );
-                }
+					this.OnAdresseChanging(value);
+					this.SendPropertyChanging();
+					this._Adresse = value;
+					this.SendPropertyChanged("Adresse");
+					this.OnAdresseChanged();
+				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codePostal", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string codePostal
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CodePostal", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string CodePostal
 		{
 			get
 			{
-				return this._codePostal;
+				return this._CodePostal;
 			}
 			set
 			{
-				if ((this._codePostal != value))
+				if ((this._CodePostal != value))
 				{
-					this._codePostal = value;
-                    OnPropertyChanged( "codePostal" );
-                }
+					this.OnCodePostalChanging(value);
+					this.SendPropertyChanging();
+					this._CodePostal = value;
+					this.SendPropertyChanged("CodePostal");
+					this.OnCodePostalChanged();
+				}
 			}
 		}
 		
@@ -240,88 +306,52 @@ namespace Trombinoscope
 			{
 				if ((this._Ville != value))
 				{
+					this.OnVilleChanging(value);
+					this.SendPropertyChanging();
 					this._Ville = value;
-                    OnPropertyChanged( "Ville" );
-                }
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Photo", DbType="Image")]
-		public System.Data.Linq.Binary Photo
-		{
-			get
-			{
-				return this._Photo;
-			}
-			set
-			{
-				if ((this._Photo != value))
-				{
-					this._Photo = value;
-                    OnPropertyChanged( "Photo" );
-                }
-			}
-		}
-	}
-	
-	public partial class GetListOfUsersResult
-	{
-		
-		private int _UserId;
-		
-		private string _Nom;
-		
-		private string _Prenom;
-		
-		public GetListOfUsersResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
-		public int UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					this._UserId = value;
+					this.SendPropertyChanged("Ville");
+					this.OnVilleChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nom", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Nom
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdImg", DbType="Int")]
+		public System.Nullable<int> IdImg
 		{
 			get
 			{
-				return this._Nom;
+				return this._IdImg;
 			}
 			set
 			{
-				if ((this._Nom != value))
+				if ((this._IdImg != value))
 				{
-					this._Nom = value;
+					this.OnIdImgChanging(value);
+					this.SendPropertyChanging();
+					this._IdImg = value;
+					this.SendPropertyChanged("IdImg");
+					this.OnIdImgChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenom", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Prenom
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
 		{
-			get
+			if ((this.PropertyChanging != null))
 			{
-				return this._Prenom;
+				this.PropertyChanging(this, emptyChangingEventArgs);
 			}
-			set
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
 			{
-				if ((this._Prenom != value))
-				{
-					this._Prenom = value;
-				}
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

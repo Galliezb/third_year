@@ -1,0 +1,47 @@
+﻿<Window x:Class="Trombinoscope.Ajouter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Trombinoscope"
+        mc:Ignorable="d"
+        Title="Ajouter" Height="300" Width="300">
+    
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Margin="10,5,0,10" Orientation="Horizontal">
+                    <TextBlock Margin="10,0,0,0" Width="100" Text="Nom : "></TextBlock>
+                    <TextBox Width="150" Text="{Binding Path=Nom, Mode=TwoWay}"></TextBox>
+                </StackPanel>
+                <StackPanel Margin="10,5,0,10" Orientation="Horizontal">
+                    <TextBlock Margin="10,0,0,0" Width="100" Text="Prenom : "></TextBlock>
+                    <TextBox Width="150" Text="{Binding Path=Prenom, Mode=TwoWay}"></TextBox>
+                </StackPanel>
+                <StackPanel Margin="10,5,0,10" Orientation="Horizontal">
+                    <TextBlock Margin="10,0,0,0" Width="100" Text="Email : "></TextBlock>
+                    <TextBox Width="150" Text="{Binding Path=Email, Mode=TwoWay}"></TextBox>
+                </StackPanel>                
+                <StackPanel Margin="10,5,0,10" Orientation="Horizontal">
+                    <TextBlock Margin="10,0,0,0" Width="100" Text="Tel : "></TextBlock>
+                    <TextBox Width="150" Text="{Binding Path=Tel, Mode=TwoWay}"></TextBox>
+                </StackPanel>
+                <StackPanel Margin="10,5,0,10" Orientation="Horizontal">
+                    <TextBlock Margin="10,0,0,0" Width="100" Text="Adresse : "></TextBlock>
+                    <TextBox Width="150" Text="{Binding Path=Adresse, Mode=TwoWay}"></TextBox>
+                </StackPanel>
+                <StackPanel Margin="10,5,0,10" Orientation="Horizontal">
+                    <TextBlock Margin="10,0,0,0" Width="100" Text="CodePostal : "></TextBlock>
+                    <TextBox Width="150" Text="{Binding Path=CodePostal, Mode=TwoWay}"></TextBox>
+                </StackPanel>
+                <StackPanel Margin="10,5,0,10" Orientation="Horizontal">
+                    <TextBlock Margin="10,0,0,0" Width="100" Text="Ville : "></TextBlock>
+                    <TextBox Width="150" Text="{Binding Path=Ville, Mode=TwoWay}"></TextBox>
+                </StackPanel>
+                <StackPanel Margin="10,5,0,10" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="Ajouter" Width="150" Click="AjouterUserToDB"></Button> 
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
