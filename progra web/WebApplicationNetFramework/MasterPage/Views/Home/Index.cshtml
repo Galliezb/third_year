@@ -10,9 +10,11 @@
 
 @foreach (var r in Model) {
 
-    @Html.Partial( "~/View/Home/_PartialPage1.cshtml", r.id );
+    @Html.Partial( "_PartialPage1", r );
     // attention les paramètres doivent avoir le même nom... encore....
-    @Html.Action( "ArticleItem", r.id );
+    //@Html.Action( "ArticleItem", new { id = r.id } );
+    // injection d'un objet dans la vu partielle
+    @*@Html.Partial( "nomVuPartielle", ObjetApasser );*@
 
 }
 

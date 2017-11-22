@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lesFiltres", "lesFiltres\le
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterPage", "MasterPage\MasterPage.csproj", "{3EB6A99A-83B3-43E9-9A5B-0B64851EC96D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BouncyCastle_crypto", "BouncyCastle_crypto\BouncyCastle_crypto.csproj", "{7239B497-7D40-4517-95B2-1DF0AD4E0F1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{3EB6A99A-83B3-43E9-9A5B-0B64851EC96D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EB6A99A-83B3-43E9-9A5B-0B64851EC96D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EB6A99A-83B3-43E9-9A5B-0B64851EC96D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7239B497-7D40-4517-95B2-1DF0AD4E0F1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7239B497-7D40-4517-95B2-1DF0AD4E0F1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7239B497-7D40-4517-95B2-1DF0AD4E0F1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7239B497-7D40-4517-95B2-1DF0AD4E0F1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

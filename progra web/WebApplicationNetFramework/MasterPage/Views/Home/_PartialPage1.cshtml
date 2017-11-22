@@ -1,4 +1,14 @@
-﻿@model GetArticleResult
+﻿
+@*// récupération de la variable envoyé depuis l'index
+@foreach (var r in Model) {
+    @Html.Partial( "_PartialPage1", r );
+}
+ici on  recu dans le model une list<GetAllArticleResult>    
+On récupère via le r du foreach un GetALlArticleResult.
+On peut envoyer ce qu'on veut via le type voulu dans la vu partielle.
+*@
+
+@model GetAllArticlesResult
 
 <div>
     <div>@Model</div>

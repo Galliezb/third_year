@@ -8,12 +8,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3EB6A99A-83B3-43E9-9A5B-0B64851EC96D}</ProjectGuid>
+    <ProjectGuid>{7239B497-7D40-4517-95B2-1DF0AD4E0F1D}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MasterPage</RootNamespace>
-    <AssemblyName>MasterPage</AssemblyName>
+    <RootNamespace>BouncyCastle_crypto</RootNamespace>
+    <AssemblyName>BouncyCastle_crypto</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -44,14 +44,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="crypto, Version=1.8.5520.19156, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BouncyCastle.Crypto.1.8.0-beta4\lib\net40\crypto.dll</HintPath>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.1\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -94,26 +93,50 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="img\default.png" />
-    <Content Include="Models\Articles.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Articles.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
-    <None Include="Models\Articles.dbml.layout">
-      <DependentUpon>Articles.dbml</DependentUpon>
-    </None>
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
-    <Content Include="img\asp-net.png" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
-    <Content Include="Style\StyleSheet1.css" />
+    <Content Include="Scripts\js.js" />
+    <Content Include="Scripts\jsencrypt-master\.gitignore" />
+    <Content Include="Scripts\jsencrypt-master\bin\jsencrypt.js" />
+    <Content Include="Scripts\jsencrypt-master\bin\jsencrypt.min.js" />
+    <Content Include="Scripts\jsencrypt-master\demo\index.html" />
+    <Content Include="Scripts\jsencrypt-master\example.html" />
+    <Content Include="Scripts\jsencrypt-master\gulpfile.js" />
+    <Content Include="Scripts\jsencrypt-master\index.html" />
+    <Content Include="Scripts\jsencrypt-master\jquery.js" />
+    <Content Include="Scripts\jsencrypt-master\lib\asn1js\asn1.js" />
+    <Content Include="Scripts\jsencrypt-master\lib\asn1js\base64.js" />
+    <Content Include="Scripts\jsencrypt-master\lib\asn1js\hex.js" />
+    <Content Include="Scripts\jsencrypt-master\lib\asn1js\LICENSE.txt" />
+    <Content Include="Scripts\jsencrypt-master\lib\asn1js\oids.js" />
+    <Content Include="Scripts\jsencrypt-master\lib\jsbn\base64.js" />
+    <Content Include="Scripts\jsencrypt-master\lib\jsbn\jsbn.js" />
+    <Content Include="Scripts\jsencrypt-master\lib\jsbn\jsbn2.js" />
+    <Content Include="Scripts\jsencrypt-master\lib\jsbn\LICENSE.txt" />
+    <Content Include="Scripts\jsencrypt-master\lib\jsbn\prng4.js" />
+    <Content Include="Scripts\jsencrypt-master\lib\jsbn\rng.js" />
+    <Content Include="Scripts\jsencrypt-master\lib\jsbn\rsa-async.js" />
+    <Content Include="Scripts\jsencrypt-master\lib\jsbn\rsa.js" />
+    <Content Include="Scripts\jsencrypt-master\lib\jsbn\rsa2.js" />
+    <Content Include="Scripts\jsencrypt-master\lib\jsrsasign\asn1-1.0.js" />
+    <Content Include="Scripts\jsencrypt-master\lib\jsrsasign\LICENSE.txt" />
+    <Content Include="Scripts\jsencrypt-master\LICENSE.txt" />
+    <Content Include="Scripts\jsencrypt-master\src\jsencrypt.js" />
+    <Content Include="Scripts\jsencrypt-master\src\LICENSE.txt" />
+    <Content Include="Scripts\jsencrypt-master\src\template.txt" />
+    <Content Include="Scripts\jsencrypt-master\test\expect.js" />
+    <Content Include="Scripts\jsencrypt-master\test\index.html" />
+    <Content Include="Scripts\jsencrypt-master\test\mocha.css" />
+    <Content Include="Scripts\jsencrypt-master\test\mocha.js" />
+    <Content Include="Scripts\jsencrypt-master\test\test.rsa.js" />
+    <Content Include="Scripts\jsencrypt-master\_includes\navbar.html" />
+    <Content Include="Scripts\jsencrypt-master\_layouts\default.html" />
+    <Content Include="Scripts\jsencrypt.min.js" />
+    <Content Include="Styles\StyleSheet1.css" />
     <Content Include="Web.config" />
-    <Content Include="Views\_test_Page_Disposition_01.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\_PartialPage1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -121,18 +144,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Articles.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Articles.dbml</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Crypto.cs" />
+    <Compile Include="Models\Identification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <Content Include="Scripts\jsencrypt-master\.npmignore" />
+    <Content Include="Scripts\jsencrypt-master\bower.json" />
+    <Content Include="Scripts\jsencrypt-master\lib\jsbn\README.md" />
+    <Content Include="Scripts\jsencrypt-master\package.json" />
+    <Content Include="Scripts\jsencrypt-master\README.md" />
+    <Content Include="Scripts\jsencrypt-master\test\generate_test_keys.sh" />
+    <Content Include="Scripts\jsencrypt-master\_config.build.yml" />
+    <Content Include="Scripts\jsencrypt-master\_config.yml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -142,9 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Folder Include="keys\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -159,9 +186,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57358</DevelopmentServerPort>
+          <DevelopmentServerPort>61579</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57358/</IISUrl>
+          <IISUrl>http://localhost:61579/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

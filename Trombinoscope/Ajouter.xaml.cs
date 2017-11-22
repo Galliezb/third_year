@@ -36,7 +36,7 @@ namespace Trombinoscope {
 
             User2DataContext tmp = new User2DataContext();
             int succes = tmp.AddUser( UserToAdd.Nom , UserToAdd.Prenom, UserToAdd.Email, UserToAdd.Tel, UserToAdd.Adresse, UserToAdd.CodePostal, UserToAdd.Ville );
-            MainWindow.user
+            //MainWindow.user
             // ferme la fenêtre
             this.DialogResult = true;
 

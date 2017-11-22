@@ -20,12 +20,15 @@ namespace MasterPage.Controllers
 
     public class HomeController : Controller
     {
+
+        List<GetAllArticlesResult> maListeArticle = new List<GetAllArticlesResult>();
+
         // GET: Home
         public ActionResult Index()
         {
             ArticlesDataContext mesArticles = new ArticlesDataContext();
-            GetAllArticlesResult ArticlesRecu = mesArticles.GetAllArticles().FirstOrDefault();
-            return View( ArticlesRecu );
+            maListeArticle = mesArticles.GetAllArticles().ToList<GetAllArticlesResult>();
+            return View( maListeArticle );
         }
 
         public ActionResult ArticleItem(string id) {

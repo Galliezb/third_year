@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Styles/StyleSheet1.css" rel="stylesheet" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <form>
+            <input id="login" type="text" name="login" />
+            <input id="pass" type="password" name="mdp" />
+            <input id="sendIdentification" type="button" value="Send"/>
+            <input id="pubKeyRsa" type="hidden" value="@ViewBag.PublicKey" />
+        </form>
+    </div>
+</body>
+</html>
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+<script src="~/Scripts/jsencrypt.min.js"></script>
+<script src="~/Scripts/js.js"></script>
