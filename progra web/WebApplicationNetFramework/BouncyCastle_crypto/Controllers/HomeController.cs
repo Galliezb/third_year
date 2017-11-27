@@ -18,10 +18,13 @@ namespace BouncyCastle_crypto.Controllers {
 
         Crypto macle = new Crypto();
 
+
+
         // GET: Home
         public ActionResult Index() {
 
             ViewBag.PublicKey = macle.PublicKey;
+            http://localhost:53858/api/Home/Get
 
             return View();
         }

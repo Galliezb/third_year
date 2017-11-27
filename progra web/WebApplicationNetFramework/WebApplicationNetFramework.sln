@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterPage", "MasterPage\Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BouncyCastle_crypto", "BouncyCastle_crypto\BouncyCastle_crypto.csproj", "{7239B497-7D40-4517-95B2-1DF0AD4E0F1D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi2", "WebApi2\WebApi2.csproj", "{4AA96B3C-4C37-479A-9A73-ABEA6B36222D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserOfWebApi", "UserOfWebApi\UserOfWebApi.csproj", "{83469D85-A51B-432C-9EE2-24CD6E58A999}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,14 @@ Global
 		{7239B497-7D40-4517-95B2-1DF0AD4E0F1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7239B497-7D40-4517-95B2-1DF0AD4E0F1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7239B497-7D40-4517-95B2-1DF0AD4E0F1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AA96B3C-4C37-479A-9A73-ABEA6B36222D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AA96B3C-4C37-479A-9A73-ABEA6B36222D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AA96B3C-4C37-479A-9A73-ABEA6B36222D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AA96B3C-4C37-479A-9A73-ABEA6B36222D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83469D85-A51B-432C-9EE2-24CD6E58A999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83469D85-A51B-432C-9EE2-24CD6E58A999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83469D85-A51B-432C-9EE2-24CD6E58A999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83469D85-A51B-432C-9EE2-24CD6E58A999}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

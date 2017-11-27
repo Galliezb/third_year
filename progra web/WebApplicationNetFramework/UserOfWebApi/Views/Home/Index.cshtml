@@ -1,0 +1,23 @@
+﻿@using UserOfWebApi.Models
+@model List<Users>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <select name="onsenfou">
+        @foreach (Users u in Model) {
+            <option id="sel_@u.UserId" value="@u.UserId">@u.Nom</option>
+        }
+        </select>
+    </div>
+</body>
+</html>
