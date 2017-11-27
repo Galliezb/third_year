@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="labo" Class="TransactUserDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=127.0.0.1\SQLEXPRESS;Initial Catalog=labo;Persist Security Info=True;User ID=labo" SettingsObjectName="Transact_SQL2.Properties.Settings" SettingsPropertyName="laboConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TransactSqlUser" Member="TransactSqlUser">
+    <Type Name="TransactSqlUser">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Modif" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.AddUserTransact" Method="AddUserTransact">
+    <Parameter Name="Nom" Parameter="nom" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="TransactUser">
+  <DataContextMoniker Name="/TransactUserDataContext" />
+  <nestedChildShapes>
+    <classShape Id="672089de-96b5-46eb-b540-e0ce9f2bead8" absoluteBounds="2.375, 1.25, 2, 1.3862939453125">
+      <DataClassMoniker Name="/TransactUserDataContext/TransactSqlUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cb6fffb3-aed9-4007-badf-152a81bde8bf" absoluteBounds="2.3899999999999997, 1.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

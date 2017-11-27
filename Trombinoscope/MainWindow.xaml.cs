@@ -20,6 +20,9 @@ namespace Trombinoscope {
     /// </summary>
     public partial class MainWindow : Window {
 
+        // Les collections observable intègre directement le Inotifypropiety et Icollectionchanged
+        // nous permettant de gérer directement les changement de propriété et collection
+        // pour mettre à jour nos vus via le binding.
         public List<Users> UsersList { get; set; }
         public Users UserSelected { get; set; } = new Users();
 
