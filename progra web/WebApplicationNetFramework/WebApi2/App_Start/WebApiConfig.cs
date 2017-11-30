@@ -9,6 +9,9 @@ namespace WebApi2
     {
         public static void Register(HttpConfiguration config)
         {
+
+
+
             // Configuration et services API Web
 
             // Itinéraires de l'API Web
@@ -16,7 +19,8 @@ namespace WebApi2
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{action}/{id}",
+                //routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

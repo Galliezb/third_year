@@ -148,6 +148,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\IrouteConstraint.cs" />
+    <Compile Include="Models\Test_contraint.cs" />
     <Compile Include="Models\toUser.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

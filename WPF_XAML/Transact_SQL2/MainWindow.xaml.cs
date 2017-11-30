@@ -28,6 +28,11 @@ namespace Transact_SQL2 {
             MyTrans = dataContext.Connection.BeginTransaction();
             dataContext.Transaction = MyTrans;
 
+
+            // en soulevant une exception sur la 500e itération
+            // on peut s'apercevoir que les requêtes ont bien rollback les enregistrements
+            // et qu'aucun insert n'as été effectué tant que les 1000 ne passe pas
+
             try {
                 for (int i = 0; i < 1000; i++) {
                     dataContext.AddUserTransact( "name" + i );

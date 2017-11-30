@@ -65,6 +65,7 @@
     <Compile Include="Ajouter.xaml.cs">
       <DependentUpon>Ajouter.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ObservableCollection.cs" />
     <Compile Include="PhotoConverter.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="User.cs" />

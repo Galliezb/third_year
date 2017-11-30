@@ -88,9 +88,9 @@ namespace lesFiltres.Controllers
         //[HandleError(View = "Error")]
 
 
-        
 
 
+        // http://skalp.developpez.com/tutoriels/dotnet/authentification-formulaire-owin-asp-net-mvc-5/
         [Authorize]
         public ActionResult PrivateEnv() {
             return View( "vu" );

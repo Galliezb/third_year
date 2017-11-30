@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trombinoscope"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525"
+        Title="MainWindow" Height="380" Width="600"
         >
     <Window.Resources>
         <Style TargetType="TextBox">
@@ -24,12 +24,27 @@
     </Window.Resources>-->
     <Grid>
         <StackPanel Orientation="Horizontal">
-            <StackPanel Orientation="Vertical">
-                <ListBox Width="220" x:Name="listBox" ItemsSource="{Binding UsersList}" SelectionChanged="listBox_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <StackPanel Orientation="Vertical" Margin="0,0,15,0">
+                <ListBox Width="240" x:Name="listBox" ItemsSource="{Binding UsersList}" SelectionChanged="listBox_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
                     <ListBox.ItemTemplate>
+                        
                         <DataTemplate>
                             <Border BorderBrush="red" BorderThickness="1">
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" Background="White">
+                                    <!--Le userSelected est mis à jours avant le click droit lors de la selection
+                                    On aurait pu simplement récupérer les infos dans le userSelected pour ensuite faire nos
+                                    manipulations.
+                                    Ou alors on peut passer par des CustomsCommands dans les setters ( méthode wiwi )
+                                    Pour retrouver les tags dans les aparmètre de l'objet sender.
+                                    Le menu contextuel est détaché du context, grace au setters, relativeSource et le 
+                                    rattachement à des ancetres, on peut venir et réussir à l'injecté dans une hierarchie
+                                    correcte.
+                                    -->
+                                    <StackPanel.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Delete" Click="DeleteUser" Tag="{Binding UserId}"/>
+                                        </ContextMenu>
+                                    </StackPanel.ContextMenu>
                                     <StackPanel Width="100" Orientation="Vertical">
                                         <Border Margin="5" Width="54" Height="81" BorderBrush="blue" BorderThickness="1">
                                             <!--<Image VerticalAlignment="Bottom" HorizontalAlignment="Center" Source="{Binding Path=Photo, Converter={StaticResource PhotoConverter}}"></Image>-->
@@ -45,7 +60,7 @@
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Margin="0,5,0,0" Text="Prenom :" VerticalAlignment="Center" />
                                             <TextBlock Text="{Binding Prenom}" VerticalAlignment="Center" />
-                                        </StackPanel>                                    
+                                        </StackPanel>
                                     </StackPanel>
                                 </StackPanel>
                             </Border>
@@ -87,7 +102,14 @@
                     <TextBox Name="Ville" Text="{Binding Path=UserSelected.Ville}"></TextBox>
                 </StackPanel>
                 <StackPanel>
-                    <Button Width="150" Content="Updater" Click="UpdateDbUser"></Button>
+                    <Button Width="150" Content="Updater" Click="UpdateDbUser">
+                        <Button.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="clic droit"></MenuItem>
+                                <MenuItem Header="Update" Click="UpdateDbUser"></MenuItem>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

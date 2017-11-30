@@ -79,6 +79,18 @@ namespace Trombinoscope {
             maFenetreAjoutUser.ShowDialog();
         }
 
+        // Permet de supprimer un utilisateur depuis son ID grace au menu contextuel
+        private void DeleteUser(object sender, RoutedEventArgs e) {
+
+            MenuItem menuClicked = (MenuItem) sender;
+            int idToDelete = Convert.ToInt32( menuClicked.Tag );
+
+            User2DataContext u2 = new User2DataContext();
+            u2.DeleteUser( idToDelete );
+
+
+        }
+
         // TODO
         // * Modfier les données d'un utilisateur sélectionné
         // * Ajouter un nouvelle utilisateur avec une nouvelle vue + Photo
