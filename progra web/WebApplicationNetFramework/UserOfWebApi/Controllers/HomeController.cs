@@ -12,7 +12,7 @@ namespace UserOfWebApi.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        // Nugget installé RestCsharp pour faciliter l'encapsulationd es method d'accès a l'api
+        // Nugget installé RestCsharp pour faciliter l'encapsulation des methodes  d'accès a l'api
         // on peut aussi jouer avec System.net.http
         [Authorize]
         public ActionResult Index()

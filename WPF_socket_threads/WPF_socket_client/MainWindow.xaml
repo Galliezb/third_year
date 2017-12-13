@@ -1,0 +1,43 @@
+﻿<Window x:Class="WPF_socket_client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_socket_client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="600">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <Button Content="Connect to server" Margin="0,0,25,0" Click="ConnectToServer"></Button>
+                <Button Content="Close connection" Click="DisconnectFromServer"></Button>
+                <TextBox Text="Status de la connection : " Margin="15,0,0,0"></TextBox>
+                <TextBox Name="connectionStatus" Foreground="red">Fermée</TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Left" Orientation="Vertical" Width="100">
+                        <ListBox>
+                            <ListBoxItem>Kahim</ListBoxItem>
+                            <ListBoxItem>Bruno</ListBoxItem>
+                            <ListBoxItem>Norbert</ListBoxItem>
+                            <ListBoxItem>Toto</ListBoxItem>
+                            <ListBoxItem>Dudule</ListBoxItem>
+                        </ListBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="500" Height="400">
+                        <ListBox>
+                            <ListBoxItem>message 01</ListBoxItem>
+                            <ListBoxItem>message 01</ListBoxItem>
+                            <ListBoxItem>message 01</ListBoxItem>
+                            <ListBoxItem>message 01</ListBoxItem>
+                        </ListBox>
+                    </StackPanel>
+                </DockPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="messageFromServer"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
