@@ -1,0 +1,27 @@
+﻿<Window x:Class="WPF_serveur.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_serveur"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center" Width="250" Margin="0,50,0,25">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Status : " Width="250" TextAlignment="Center"></TextBlock>
+                    <TextBlock Name="statusListener" Text="cliquez sur un bouton" Width="250" TextAlignment="Center" FontFamily="bold"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
+                <Button Content="Démarrer l'écoute" Margin="0,0,25,0" Click="StartListener"></Button>
+                <Button Content="Stopper l'écoute" Click="StopListener"></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,25,0,0">
+                <TextBlock>Nombre de client connecté : </TextBlock>
+                <TextBlock Name="nbrClientConnecte"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

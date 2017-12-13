@@ -1,0 +1,22 @@
+﻿<Window x:Class="client01.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:client01"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="10,50,10,50">
+            <Border BorderThickness="1" BorderBrush="Black" Margin="0,25,0,25">
+                <TextBlock Name="errorIdentification" TextAlignment="Center" Foreground="Red"></TextBlock>
+            </Border>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="pseudo" Width="150" FontSize="16" Margin="10,0,0,0"></TextBox>
+                <PasswordBox Name="mdp" Width="150" FontSize="16" Margin="10,0,0,0"></PasswordBox>
+                <Button Content="Log in" Click="Identification" Width="150" Margin="10,0,0,0"></Button>
+
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,54 @@
+﻿<Window x:Class="client01.Tchat"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:client01"
+        mc:Ignorable="d"
+        Title="tchat" Height="500" Width="800">
+    <Grid>
+        <DockPanel>
+
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Height="35">
+                <Button VerticalAlignment="Center" Content="Leave" Margin="10,0,10,0"></Button>
+                <TextBlock VerticalAlignment="Center" Text="Message : "></TextBlock>
+                <TextBox VerticalAlignment="Center" Name="messageToSend" Width="630"></TextBox>
+                <Button VerticalAlignment="Center" Content="send" Click="SendMessage" Margin="10,0,0,0"></Button>
+            </StackPanel>
+
+            <StackPanel DockPanel.Dock="Left" Orientation="Vertical" Width="100" Height="500">
+                <Border BorderThickness="1" BorderBrush="Black">
+                    <ListBox>
+                        <ListBoxItem>
+                            <TextBlock>Norbert</TextBlock>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <TextBlock>Bruno</TextBlock>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <TextBlock>Kahim</TextBlock>
+                        </ListBoxItem>
+                    </ListBox>
+                </Border>
+            </StackPanel>
+            <!--<StackPanel DockPanel.Dock="Right" Orientation="Vertical" Width="1">
+                
+            </StackPanel>-->
+            <DockPanel>
+                <ListBox DockPanel.Dock="Top">
+                    <ListBoxItem>
+                        <DockPanel ScrollViewer.CanContentScroll="False">
+                            <TextBlock DockPanel.Dock="Left" Width="50" VerticalAlignment="top">Norbert</TextBlock>
+                            <TextBlock DockPanel.Dock="Left" Width="10" VerticalAlignment="top">:</TextBlock>
+                            <TextBox VerticalAlignment="top" TextWrapping="Wrap" Width="600">Un message de quelqu'unUn message de quelqu'unUn message de quelqu'unUn message de quelqu'unUn message de quelqu'unUn message de quelqu'unUn message de quelqu'unUn message de quelqu'unUn message de quelqu'unUn message de quelqu'un</TextBox>
+                        </DockPanel>
+                    </ListBoxItem>
+                </ListBox>
+            </DockPanel>
+            
+            
+        </DockPanel>
+        
+
+    </Grid>
+</Window>
