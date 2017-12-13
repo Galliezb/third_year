@@ -21,7 +21,7 @@ namespace WPF_socket_client {
     /// </summary>
     public partial class MainWindow : Window {
 
-        Socket socketSender;
+        TcpClient connectionToServer;
 
         public MainWindow() {
             InitializeComponent();
@@ -30,50 +30,50 @@ namespace WPF_socket_client {
         private void ConnectToServer(object sender, RoutedEventArgs e) {
 
             // Data buffer for incoming data.
-            byte[] bytes = new byte[1024];
+            byte[] receiveBuffer = new byte[1024];
 
             // l'hote à contacter
-            IPEndPoint remoteEP = new IPEndPoint( IPAddress.Parse("127.0.0.1"), 11000 );
-            // Create a TCP/IP  socket.
-            socketSender = new Socket( AddressFamily.InterNetwork,
-                SocketType.Stream, ProtocolType.Tcp );
+            IPEndPoint remoteEP = new IPEndPoint( IPAddress.Parse("127.0.0.1"), 8750 );
+           
 
             try {
-                socketSender.Connect( remoteEP );
 
-                Console.WriteLine( "Socket connected to {0}",
-                    socketSender.RemoteEndPoint.ToString() );
+                //connectionToServer = new TcpClient(remoteEP );
+                connectionToServer = new TcpClient();
+                connectionToServer.Connect( remoteEP );
 
                 // Encode the data string into a byte array.
                 byte[] msg = Encoding.ASCII.GetBytes( "This is a test<EOF>" );
 
                 // Send the data through the socket.
-                int bytesSent = socketSender.Send( msg );
+                int bytesSent = connectionToServer.Client.Send( msg );
 
                 // Receive the response from the remote device.
-                int bytesRec = socketSender.Receive( bytes );
-                Console.WriteLine( "Echoed test = {0}",
-                    Encoding.ASCII.GetString( bytes, 0, bytesRec ) );
+                int NbrByteReceive = connectionToServer.Client.Receive( receiveBuffer );
 
-
+                connectionStatus.Text = "Server => "+ Encoding.ASCII.GetString( receiveBuffer, 0, NbrByteReceive );
+                connectionStatus.Foreground = Brushes.Green;
 
             } catch (ArgumentNullException ane) {
-                Console.WriteLine( "ArgumentNullException : {0}", ane.ToString() );
-            } catch (SocketException se) {
-                Console.WriteLine( "SocketException : {0}", se.ToString() );
+                connectionStatus.Text = "ArgumeetNullException levée";
+                connectionStatus.Foreground = Brushes.Red;
             } catch (Exception er) {
-                Console.WriteLine( "Unexpected exception : {0}", er.ToString() );
+                connectionStatus.Text = "Exception levée";
+                connectionStatus.Foreground = Brushes.Red;
+            } finally {
+                connectionToServer.Close();
+
             }
 
         }
 
         private void DisconnectFromServer(object sender, RoutedEventArgs e) {
 
-            if ( socketSender!= null) {
+            if (connectionToServer != null) {
 
                 // Release the socket.
-                socketSender.Shutdown( SocketShutdown.Both );
-                socketSender.Close();
+                connectionToServer.Client.Shutdown( SocketShutdown.Both );
+                connectionToServer.Client.Close();
 
             }
 

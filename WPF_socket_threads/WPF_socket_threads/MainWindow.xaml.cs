@@ -25,7 +25,6 @@ namespace WPF_socket_threads {
         List<ConnectedClient> mesClients = new List<ConnectedClient>();
         Thread th;
         TcpListener listener;
-        bool stop = false;
 
         public MainWindow() {
             InitializeComponent();
@@ -33,53 +32,73 @@ namespace WPF_socket_threads {
 
         private void ConnectSocket(object sender, RoutedEventArgs e) {
 
-            // créer le listener
-            listener = new TcpListener( new System.Net.IPEndPoint( IPAddress.Parse( "127.0.0.1" ), 8750 ) );
-            // commence à écouter les connections
-            listener.Start();
-
+            // on va créer lancer l'acceptation des connexions dans un thread à qui on envoi le listener ouvert
             th = new Thread( GetSocketConnection );
-            th.Start( listener );
+            th.Start();
+
+            // on mets à jours l'interface sur l'état
             statusSocket.Text = "Ouvert";
             statusSocket.Foreground = Brushes.Green;
         }
 
         private void CloseAllSocket(object sender, RoutedEventArgs e) {
 
+            // mise à jour de l'interface sur le status de la connection
             statusSocket.Text = "Fermé";
             statusSocket.Foreground = Brushes.Red;
 
             ConnectedClient.NbrConnection=0;
             nbrSocketOuvert.Text = "0";
 
+            // on notifie les clients qu'on va fermer la connection.
             foreach(ConnectedClient c in mesClients) {
 
                 if (c.TcpConnection != null) {
+                    // on ferme la connection et on ferme le thread associé
                     c.TcpConnection.Close();
+                    c.Th.Abort();
                 }
 
             }
-            
-            // stop le thread d'écoute
-            th.Abort();
+
             // arrête le listener
             listener.Stop();
+            // stop le thread d'écoute
+            th.Abort();
+
         }
 
         public void GetSocketConnection() {
 
-            while ( !stop ) {
+            // créer le listener
+            listener = new TcpListener( new System.Net.IPEndPoint( IPAddress.Parse( "127.0.0.1" ), 8750 ) );
+            // commence à écouter les connections
+            listener.Start();
 
-                TcpClient mclient = listener.AcceptTcpClient();
-                th = new Thread( new ParameterizedThreadStart(GestionClient) );
-                // on créer un connectedClient et on démarre ele Thread
-                ConnectedClient monClient = new ConnectedClient { TcpConnection = mclient, Th= th };
-                th.Start( monClient );
-                // stock dans la liste pour gérer plus tard toutes les fermetures par exemple
-                mesClients.Add( monClient );
+            while ( true ) {
 
-                ConnectedClient.NbrConnection++;
-                nbrSocketOuvert.Text = ConnectedClient.NbrConnection.ToString();
+                try {
+
+                    TcpClient mclient = listener.AcceptTcpClient();
+                    Thread leThreadClient = new Thread( GestionClient );
+                    // on créer un connectedClient et on démarre ele Thread
+                    ConnectedClient monClient = new ConnectedClient { TcpConnection = mclient, Th = leThreadClient };
+                    leThreadClient.Start( monClient );
+                    // stock dans la liste pour gérer plus tard toutes les fermetures par exemple
+                    mesClients.Add( monClient );
+                    
+                    ConnectedClient.NbrConnection++;
+                    // ne pouvant pas atteindre l'interface graphique depuis ce Thread
+                    // on passe par un délégué anonyme, vive les Action et Func :D
+                    this.Dispatcher.Invoke( new Action(() => nbrSocketOuvert.Text = ConnectedClient.NbrConnection.ToString() ) );
+                   
+                
+                // si le programme principale coupe le listener, alors un socketException est levé
+                // on utilise cette levé d'exception pour sortir de la boucle et finir le thread
+                } catch ( SocketException se) {
+                    break;
+                }
+
 
             }
             // BLOQUANT
@@ -108,6 +127,7 @@ namespace WPF_socket_threads {
             string dataReceive = string.Empty;
 
             while ( true) {
+
 
                 // délimite la taille des message à 255 caracatères
                 bytecount = netstream.Read( monBuffer, 0, tailleBuffer );
