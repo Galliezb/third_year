@@ -21,9 +21,11 @@ namespace WPF_socket_client {
     /// </summary>
     public partial class MainWindow : Window {
 
+        internal string LoginRenseigne;
         TcpClient connectionToServer;
 
-        public MainWindow() {
+        public MainWindow(string login) {
+            LoginRenseigne = login;
             InitializeComponent();
         }
 

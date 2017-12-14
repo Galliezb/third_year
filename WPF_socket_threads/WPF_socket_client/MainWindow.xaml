@@ -5,39 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_socket_client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="600">
+        Title="Tchat" Height="500" Width="600">
+    <!--
+    Liste des utilisateurs sur la gauche
+    - Boule verte pour connecté
+    - Boule Rouge pour non connecté
+    - A droite un chiffre qui indique s'il y a des messages non lus
+    - Le tout sera fait avec des templates. Et on change le template s'il y a des messages
+    - SI pas de messages, on passe sur un template qui n'affiche pas 0 messages mais bien aucune information.
+    vsfsdlksfsd
+    -->
+
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <Button Content="Connect to server" Margin="0,0,25,0" Click="ConnectToServer"></Button>
-                <Button Content="Close connection" Click="DisconnectFromServer"></Button>
-                <TextBox Text="Status de la connection : " Margin="15,0,0,0"></TextBox>
-                <TextBox Name="connectionStatus" Foreground="red">Fermée</TextBox>
+        <DockPanel>
+            <StatusBar DockPanel.Dock="Bottom">
+                <StackPanel Orientation="Horizontal">
+                    <DockPanel>
+                        <Image Source="C:\bruno\githubServer\third_year\WPF_socket_threads\WPF_socket_client\img\fleche_haut_gris.png" Width="40" Height="40"></Image>
+                    </DockPanel>
+                </StackPanel>
+            </StatusBar>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Button Content="Connect to server" Margin="0,0,25,0" Click="ConnectToServer"></Button>
+                    <Button Content="Close connection" Click="DisconnectFromServer"></Button>
+                    <TextBox Text="Status de la connection : " Margin="15,0,0,0"></TextBox>
+                    <TextBox Name="connectionStatus" Foreground="red">Fermée</TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <DockPanel>
+                        <StackPanel DockPanel.Dock="Left" Orientation="Vertical" Width="100">
+                            <ListBox>
+                                <ListBoxItem>Kahim</ListBoxItem>
+                                <ListBoxItem>Bruno</ListBoxItem>
+                                <ListBoxItem>Norbert</ListBoxItem>
+                                <ListBoxItem>Toto</ListBoxItem>
+                                <ListBoxItem>Dudule</ListBoxItem>
+                            </ListBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="500" Height="400">
+                            <ListBox>
+                                <ListBoxItem>message 01</ListBoxItem>
+                                <ListBoxItem>message 01</ListBoxItem>
+                                <ListBoxItem>message 01</ListBoxItem>
+                                <ListBoxItem>message 01</ListBoxItem>
+                            </ListBox>
+                        </StackPanel>
+                    </DockPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Name="messageFromServer"></TextBlock>
+                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <DockPanel>
-                    <StackPanel DockPanel.Dock="Left" Orientation="Vertical" Width="100">
-                        <ListBox>
-                            <ListBoxItem>Kahim</ListBoxItem>
-                            <ListBoxItem>Bruno</ListBoxItem>
-                            <ListBoxItem>Norbert</ListBoxItem>
-                            <ListBoxItem>Toto</ListBoxItem>
-                            <ListBoxItem>Dudule</ListBoxItem>
-                        </ListBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Width="500" Height="400">
-                        <ListBox>
-                            <ListBoxItem>message 01</ListBoxItem>
-                            <ListBoxItem>message 01</ListBoxItem>
-                            <ListBoxItem>message 01</ListBoxItem>
-                            <ListBoxItem>message 01</ListBoxItem>
-                        </ListBox>
-                    </StackPanel>
-                </DockPanel>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Name="messageFromServer"></TextBlock>
-            </StackPanel>
-        </StackPanel>
+
+        </DockPanel>
+
     </Grid>
 </Window>
