@@ -11,6 +11,8 @@ namespace console_test_com {
 
         static void Main(string[] args) {
 
+            // chercher le pdf .net services components
+            // voir Norbert
 
             String ProgrammeID = "ServeurCom3.Personne";
             String Serveur = "localhost";
@@ -33,7 +35,7 @@ namespace console_test_com {
                 //mType.InvokeMember( "Enregistrer", System.Reflection.BindingFlags.InvokeMethod, null, simpleObjt, new object[] { @"c:\data\test.txt" } );
 
                 // impossibilité de faire tourner les 2 mécanismes simultanément
-
+                // fonctionne uniquement avec les références.
                 ServeurCom3.Personne simpleObjt = ( ServeurCom3.Personne)Activator.CreateInstance( mType );
                 simpleObjt.Nom = "toto";
                 simpleObjt.Prenom = "dudule";
