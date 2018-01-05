@@ -17,12 +17,16 @@ namespace Trombinoscope {
     /// <summary>
     /// Logique d'interaction pour Ajouter.xaml
     /// </summary>
-    public partial class Ajouter : Window, INotifyCollectionChanged {
+    public partial class Ajouter : Window {
 
         public Users UserToAdd = new Users();
+        private MonObservableCollection<Users> UsersList;
 
-        public Ajouter() {
+        public Ajouter( MonObservableCollection<Users> lu ) {
             InitializeComponent();
+
+            UsersList = lu;
+
             DataContext = this.UserToAdd;
             UserToAdd.Nom = "Nom";
             UserToAdd.Prenom = "Prenom";
@@ -30,13 +34,15 @@ namespace Trombinoscope {
             UserToAdd.Tel = "056/123456";
         }
 
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
 
         private void AjouterUserToDB(object sender, RoutedEventArgs e) {
 
-            User2DataContext tmp = new User2DataContext();
-            int succes = tmp.AddUser( UserToAdd.Nom , UserToAdd.Prenom, UserToAdd.Email, UserToAdd.Tel, UserToAdd.Adresse, UserToAdd.CodePostal, UserToAdd.Ville );
+            //User2DataContext tmp = new User2DataContext();
+            //int succes = tmp.AddUser( UserToAdd.Nom , UserToAdd.Prenom, UserToAdd.Email, UserToAdd.Tel, UserToAdd.Adresse, UserToAdd.CodePostal, UserToAdd.Ville );
             //MainWindow.user
+
+            UsersList.Add( UserToAdd );
+
             // ferme la fenêtre
             this.DialogResult = true;
 

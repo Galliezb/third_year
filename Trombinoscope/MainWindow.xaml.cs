@@ -23,14 +23,18 @@ namespace Trombinoscope {
         // Les collections observable intègre directement le Inotifypropiety et Icollectionchanged
         // nous permettant de gérer directement les changement de propriété et collection
         // pour mettre à jour nos vus via le binding.
-        public List<Users> UsersList { get; set; }
+        public MonObservableCollection<Users> UsersList { get; set; } = new MonObservableCollection<Users>();
         public Users UserSelected { get; set; } = new Users();
 
         public MainWindow() {
             InitializeComponent();
             User2DataContext DBUsers = new User2DataContext();
-            UsersList = DBUsers.GetListOfUsers().ToList();
+            List<Users> l = DBUsers.GetListOfUsers().ToList();
+            foreach ( Users u in l ) {
+                UsersList.Add( u );
+            }
             DataContext = this;
+
         }
 
 
@@ -57,10 +61,10 @@ namespace Trombinoscope {
 
         private void UpdateDbUser(object sender, RoutedEventArgs e) {
 
-            User2DataContext context = new User2DataContext();
+            //User2DataContext context = new User2DataContext();
             // récupère l'int pour le retour et vérification en mode débogage que tout est ok de ce côté ci
-            int retour = context.UpdateUser( UserSelected.UserId, UserSelected.Nom, UserSelected.Prenom, UserSelected.Email, UserSelected.Tel,
-                                             UserSelected.Adresse, UserSelected.CodePostal, UserSelected.Ville );
+            //int retour = context.UpdateUser( UserSelected.UserId, UserSelected.Nom, UserSelected.Prenom, UserSelected.Email, UserSelected.Tel,
+            //                                 UserSelected.Adresse, UserSelected.CodePostal, UserSelected.Ville );
 
             // pour modifier les items de la liste
             // on peut créer une classe partial GetListOFUser : InotifyInterface
@@ -71,11 +75,23 @@ namespace Trombinoscope {
             // stocké dans un type particulière ( ici la classe linq généré par le drag and drop de la table )
             // TODO => pas encore réussi à le faie intégrer dans une des mes classes
 
+            int indexOf = UsersList.UsersList.IndexOf( UserSelected );
+            if ( indexOf != -1 ) {
+                UsersList.UsersList[indexOf].UserId = UserSelected.UserId;
+                UsersList.UsersList[indexOf].Nom = UserSelected.Nom;
+                UsersList.UsersList[indexOf].Prenom = UserSelected.Prenom;
+                UsersList.UsersList[indexOf].Email = UserSelected.Email;
+                UsersList.UsersList[indexOf].Tel = UserSelected.Tel;
+                UsersList.UsersList[indexOf].Adresse = UserSelected.Adresse;
+                UsersList.UsersList[indexOf].CodePostal = UserSelected.CodePostal;
+                UsersList.UsersList[indexOf].Ville = UserSelected.Ville;
+            }
+
 
         }
 
         private void AddUser(object sender, RoutedEventArgs e) {
-            Ajouter maFenetreAjoutUser = new Ajouter();
+            Ajouter maFenetreAjoutUser = new Ajouter( UsersList );
             maFenetreAjoutUser.ShowDialog();
         }
 

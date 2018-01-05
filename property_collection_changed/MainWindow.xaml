@@ -1,0 +1,49 @@
+﻿<Window x:Class="property_collection_changed.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:property_collection_changed"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <!--La partie Listbox et affichage de la liste-->
+            <StackPanel Orientation="Horizontal" Height="318">
+                <ListBox ItemsSource="{Binding ListUtilisateur}" Width="150" SelectionChanged="ChangementDeSelectionDansLaListeBox">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding ID}" Visibility="Hidden" Width="0" Height="0"></TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Width="50">Nom :</TextBlock>
+                                    <TextBlock Text="{Binding Nom}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Width="50">Prenom :</TextBlock>
+                                    <TextBlock Text="{Binding Prenom}"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <!--La partie update des infos-->
+                <StackPanel Orientation="Vertical" Width="200">
+                    <TextBlock Text="{Binding UserSelected.ID}" Visibility="Hidden" Width="0"></TextBlock>
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <TextBlock Width="60">Nom :</TextBlock>
+                        <TextBox Text="{Binding UserSelected.Nom}" Width="100"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <TextBlock Width="60">Prenom :</TextBlock>
+                        <TextBox Text="{Binding UserSelected.Prenom}" Width="100"></TextBox>
+                    </StackPanel>
+                    <StackPanel>
+                        <Button Content="Mettre à jour" Click="UpdateUser"></Button>
+                        <Button Content="Ajouter utilisateur" Click="AjoutUtilisateur"></Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

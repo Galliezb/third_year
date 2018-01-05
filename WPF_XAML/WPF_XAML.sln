@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trombinoscope", "..\Trombin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transact_SQL2", "Transact_SQL2\Transact_SQL2.csproj", "{ADEEF9B4-C5DD-451E-8148-70A02822FEEE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "property_collection_changed", "..\property_collection_changed\property_collection_changed.csproj", "{7CB095FD-12F7-4B72-8E8E-8B429DD77EAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{ADEEF9B4-C5DD-451E-8148-70A02822FEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADEEF9B4-C5DD-451E-8148-70A02822FEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADEEF9B4-C5DD-451E-8148-70A02822FEEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CB095FD-12F7-4B72-8E8E-8B429DD77EAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CB095FD-12F7-4B72-8E8E-8B429DD77EAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CB095FD-12F7-4B72-8E8E-8B429DD77EAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CB095FD-12F7-4B72-8E8E-8B429DD77EAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

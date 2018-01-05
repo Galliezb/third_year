@@ -7,25 +7,30 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Trombinoscope {
-    class ObservableCollection : INotifyCollectionChanged {
+    public class MonObservableCollection<T> : INotifyCollectionChanged {
 
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
-   
-        public List<Users> UsersList { get; set; }
+        public event NotifyCollectionChangedEventHandler CollectionChanged = new NotifyCollectionChangedEventHandler( ( x , y ) => { } );
 
-        public void Add(Users u) {
+        public List<T> UsersList { get; set; } = new List<T>();
+
+        public void Add ( T u ) {
 
             UsersList.Add( u );
-            CollectionChanged( this, new NotifyCollectionChangedEventArgs( NotifyCollectionChangedAction.Add ) );
+            OnCollectionChanged( new NotifyCollectionChangedEventArgs( NotifyCollectionChangedAction.Add , u ) );
 
         }
 
-        public void Remove(Users u) {
+        public void Remove ( T u ) {
 
             UsersList.Remove( u );
-            CollectionChanged( this, new NotifyCollectionChangedEventArgs( NotifyCollectionChangedAction.Remove ) );
+            OnCollectionChanged( new NotifyCollectionChangedEventArgs( NotifyCollectionChangedAction.Remove ) );
 
         }
 
+        protected virtual void OnCollectionChanged ( NotifyCollectionChangedEventArgs e ) {
+            if ( CollectionChanged != null ) {
+                CollectionChanged( this , e );
+            }
+        }
     }
 }

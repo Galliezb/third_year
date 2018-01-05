@@ -20,7 +20,11 @@ namespace LesCommandes {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-            CommandManager.RegisterClassCommandBinding( typeof( MainWindow ), new CommandBinding( ApplicationCommands.Close, new ExecutedRoutedEventHandler( CommandBinding_Executed ) , new CanExecuteRoutedEventHandler( CommandeBinding_CanExecute ) ) );
+            CommandManager.RegisterClassCommandBinding( 
+                typeof( MainWindow ), 
+                new CommandBinding( ApplicationCommands.Close, new ExecutedRoutedEventHandler( CommandBinding_Executed ),
+                new CanExecuteRoutedEventHandler( CommandeBinding_CanExecute )
+                ) );
         }
 
         private void CommandeBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e) {
