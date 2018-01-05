@@ -1,7 +1,10 @@
 package com.damocorop.recycleur;
 
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,5 +23,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ConstraintLayout cl = findViewById(R.id.test);
+        TextView tv = findViewById(R.id.txt);
+
+        tv.setText( "width : "+cl.getWidth() );
     }
 }

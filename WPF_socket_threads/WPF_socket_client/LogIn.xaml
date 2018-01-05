@@ -1,0 +1,35 @@
+﻿<Window x:Class="WPF_socket_client.LogIn"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_socket_client"
+        mc:Ignorable="d"
+        Title="Login" Height="500" Width="620">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Border BorderBrush="Black" BorderThickness="2" Width="400" Height="210" Margin="100,150,100,175">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="Bonjour, Merci de vous identifier" Margin="15" FontSize="16"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
+                        <TextBlock Text="Login : " Width="85" FontSize="16"></TextBlock>
+                        <TextBox Name="Login" Text="" Width="150"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
+                        <TextBlock Text="Password : " Width="85" FontSize="16"></TextBlock>
+                        <TextBox Name="Pwd" Text="" Width="150"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
+                        <Button Content="S'identifier" FontSize="14" Padding="5" Click="Identification"></Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
+                        <TextBlock Name="displayError" HorizontalAlignment="Center" Foreground="Red"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>

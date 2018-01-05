@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -115,11 +116,10 @@ namespace WPF_socket_threads {
         public void GestionClient( object o) {
 
             ConnectedClient cc = (ConnectedClient)o;
-
             NetworkStream netstream = cc.TcpConnection.GetStream();
-            string message = "200 OK";
-            byte[] sendbyte = Encoding.ASCII.GetBytes( message );
-            netstream.Write( sendbyte, 0, sendbyte.Length );
+            byte[] transferByte;
+            sendMessageToClient( "CONNECTION: 200 OK" );
+
 
             int tailleBuffer = 255;
             byte[] monBuffer = new byte[tailleBuffer];
@@ -128,19 +128,96 @@ namespace WPF_socket_threads {
 
             while ( true) {
 
-
                 // délimite la taille des message à 255 caracatères
                 bytecount = netstream.Read( monBuffer, 0, tailleBuffer );
 
 
+                // si le byte vaut 0 c'est qu'une déconnection est survenu
                 if ( bytecount != 0 ) {
 
                     dataReceive += Encoding.ASCII.GetString( monBuffer, 0, bytecount );
                     // si la ligne est terminé, on lance le traitment
                     if (dataReceive.EndsWith("\r\n") ) {
 
-                        sendbyte = Encoding.ASCII.GetBytes( dataReceive );
-                        netstream.Write( sendbyte, 0, sendbyte.Length );
+                        // renvoi ce qu'on lui a envoyé, c'est pas mal pour tester
+                        //transferByte = Encoding.ASCII.GetBytes( dataReceive );
+                        //netstream.Write( sendbyte, 0, sendbyte.Length );
+
+                        // on transforme les bytes en string et on traite le retour
+                        string[] orders = dataReceive.Split( ':' );
+
+                        if (  orders[0].Length == 0) {
+                            sendMessageToClient( "ERROR: incorrect format request" );
+                        // vérification login mdp
+                        } else if ( orders[0] == "LOGIN" ) {
+                            cc.UserName = orders[1].Substring(0,orders[1].Length-2);
+                            sendMessageToClient( "Login reception confirm" );
+                        } else if (orders[0] == "PWD") {
+                            cc.Password = orders[1].Substring( 0, orders[1].Length - 2 );
+                            sendMessageToClient( "Password reception confirm" );
+                        } else if (orders[0] == "SAYMEMYFUTUR") {
+
+                            if ( cc.UserName != null && cc.Password != null) {
+
+                                socketServerDataContext db = new socketServerDataContext();
+                                // !!! renvoi un null si rien n'est trouvé
+                                isLoginPasswordGoogResult result = db.isLoginPasswordGoog( cc.UserName, cc.Password ).FirstOrDefault();
+                                int id = 0;
+                                if ( result!= null) { id = result.id; }
+
+                                if ( id != 0) {
+                                    sendMessageToClient( "IDENT:connected with server. Welcome back " + cc.UserName );
+                                    cc.IsIdentified = true;
+                                    //TODO envoyer vers une fonction de traitement du tchat
+                                } else {
+                                    sendMessageToClient( "IDENT:Identification failed" );
+                                }
+
+                            } else {
+                                sendMessageToClient( "ERROR: need login/pwd for identification" );
+                            }
+                        
+                        // renvoi la liste des clients connectés et identifié
+                        } else if (orders[0] == "GETLISTUSERCONNECTED") {
+
+                            string toSend = "";
+                            foreach( ConnectedClient c in mesClients) {
+                                // si pas encore identifié, on n'affiche pas.
+                                if ( c.IsIdentified) {
+                                    toSend += c.UserName + ";";
+                                }
+                            }
+                            if ( toSend.Length > 0) {
+                                toSend = toSend.Substring( 0, toSend.Length - 1 );
+                            }
+                            sendMessageToClient( toSend );
+
+                        // Envoyer un message vers un autre poste
+                        } else if (orders[0] == "SENDMSGTO") {
+
+                            Regex r = new Regex("(.*) (.*)");
+                            string[] resultSplit = r.Split( orders[1] );
+
+                            bool destFind = false;
+
+                            foreach ( ConnectedClient c in mesClients) {
+                                // destinataire trouvé, on envoi
+                                if ( c.UserName == resultSplit[1]) {
+                                    destFind = true;
+                                    sendMessageToClient( "REP:message send with success" );
+                                    break;
+                                }
+                                
+                            }
+
+                            if ( !destFind) {
+                                sendMessageToClient( "ERROR:Receiver not found" );
+                            }
+
+                        } else {
+                            sendMessageToClient( "ERROR:data unreadable" );
+                        }
+
                         dataReceive = "";
 
                     }
@@ -166,6 +243,12 @@ namespace WPF_socket_threads {
             // il faut en glober tout ceci dans un try catch, car si le client ferme la connection
             // soulèvement d'une exce
 
+            void sendMessageToClient( string message) {
+                message += "\r\n";
+                transferByte = Encoding.ASCII.GetBytes( message );
+                netstream.Write( transferByte, 0, transferByte.Length );
+            }
+
         }
 
         private void DeleteClientFromList(ConnectedClient c) {
@@ -174,5 +257,6 @@ namespace WPF_socket_threads {
             mesClients.RemoveAt( toDelete );
 
         }
+
     }
 }

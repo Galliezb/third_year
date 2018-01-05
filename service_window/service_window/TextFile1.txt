@@ -1,0 +1,27 @@
+﻿netbios pour gérer les ajout/suppression de services
+Ajouter un service controller via la boite à outil
+
+le service sera démarré lorsqu'il quittera le le onStart();
+
+on génère l'application, on va retrouver le .exe dans le debug
+
+https://docs.microsoft.com/en-us/dotnet/framework/windows-services/how-to-install-and-uninstall-services
+
+Si on fait une copie, c'est chiant car on devra recopier à chaque modification. On ne le copiera qu'une fois
+en version release. Inconvénient : il faudra couper le service, régénérer et ensuite relancer le service.
+En fonctionneemnt, il ne pourra écraser l'exe qui tourne en tache de fond.
+
+dans la fenetre design, clic droit, programme d'installation
+
+
+Pour faire interagir le service avec l'utilisateur
+* fichier de config ( restart service nécessaire )
+* connection avec un socket
+* un service web
+* Base de registre ( ! droits ) ( HKLM local machine / HKCV current user)
+	le HKLM sera le plus problématique à cause des droits de lecture
+		=> elevation automatique de privilète ( pour tout le programme )
+		=> à la demande, sur certaines choses comme l'accès au registry
+
+Dans la cmd de VS2017 => installutil depuis le répertoire du .exe /installutil
+

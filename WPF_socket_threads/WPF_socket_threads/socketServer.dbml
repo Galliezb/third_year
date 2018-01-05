@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="labo" Class="socketServerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=127.0.0.1\SQLEXPRESS;Initial Catalog=labo;Persist Security Info=True;User ID=labo" SettingsObjectName="WPF_socket_threads.Properties.Settings" SettingsPropertyName="laboConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.isLoginPasswordGoog" Method="isLoginPasswordGoog">
+    <Parameter Name="Login" Parameter="login" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Passsword" Parameter="passsword" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="isLoginPasswordGoogResult">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

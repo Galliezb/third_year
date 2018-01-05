@@ -21,50 +21,15 @@ namespace WPF_socket_client {
     /// </summary>
     public partial class MainWindow : Window {
 
+        internal string LoginRenseigne;
         TcpClient connectionToServer;
+        IPEndPoint remoteEP;
 
-        public MainWindow() {
+        public MainWindow(TcpClient tmpTcpClient, IPEndPoint tmpRemoteEndPont, string login) {
+            LoginRenseigne = login;
+            connectionToServer = tmpTcpClient;
+            remoteEP = tmpRemoteEndPont;
             InitializeComponent();
-        }
-
-        private void ConnectToServer(object sender, RoutedEventArgs e) {
-
-            // Data buffer for incoming data.
-            byte[] receiveBuffer = new byte[1024];
-
-            // l'hote à contacter
-            IPEndPoint remoteEP = new IPEndPoint( IPAddress.Parse("127.0.0.1"), 8750 );
-           
-
-            try {
-
-                //connectionToServer = new TcpClient(remoteEP );
-                connectionToServer = new TcpClient();
-                connectionToServer.Connect( remoteEP );
-
-                // Encode the data string into a byte array.
-                byte[] msg = Encoding.ASCII.GetBytes( "This is a test<EOF>" );
-
-                // Send the data through the socket.
-                int bytesSent = connectionToServer.Client.Send( msg );
-
-                // Receive the response from the remote device.
-                int NbrByteReceive = connectionToServer.Client.Receive( receiveBuffer );
-
-                connectionStatus.Text = "Server => "+ Encoding.ASCII.GetString( receiveBuffer, 0, NbrByteReceive );
-                connectionStatus.Foreground = Brushes.Green;
-
-            } catch (ArgumentNullException ane) {
-                connectionStatus.Text = "ArgumeetNullException levée";
-                connectionStatus.Foreground = Brushes.Red;
-            } catch (Exception er) {
-                connectionStatus.Text = "Exception levée";
-                connectionStatus.Foreground = Brushes.Red;
-            } finally {
-                connectionToServer.Close();
-
-            }
-
         }
 
         private void DisconnectFromServer(object sender, RoutedEventArgs e) {
