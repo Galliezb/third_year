@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using modelDansUneVue.Models;
 
 // Exercice :
 // * Expression régulière pour vérifier l'email
@@ -20,7 +21,7 @@ namespace modelDansUneVue.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index( Etudiant e )
         {
             Models.Etudiant ets1 = new Models.Etudiant { Nom = "Dupont", Prenom = "jesaispas", Matricule = "055525896" };
             return View( ets1 );

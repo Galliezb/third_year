@@ -1,0 +1,73 @@
+﻿@model ASP_ex_janvier_2018.Models.MVM
+@{
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Styles/StyleSheet1.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="bandeau">
+        <a href="/"><img src="~/img/caddy_pas_voiture.jpg" /></a>
+        <span class="txtCentre">Mon Text Au Centre</span>
+    </div>
+    <div class="ListGenre">
+        @foreach ( var s in Model.ListGenre ) {
+            <div class="Genre" id="Genre_@s.Gnom">@s.Gnom</div>
+            <div class="ContGenre" id="ContGenre_@s.Gnom">
+
+                @foreach ( var a in Model.Tout.Where( x => x.Gnom == s.Gnom ) ) {
+                    <div class="article" id="article_@a.ArticleId">
+                        <input type="hidden" id="desc_article_@a.ArticleId" value="@a.Descriptif" />
+                        <input type="hidden" id="genre_article_@a.ArticleId" value="@a.GenreId" />
+                        <input type="hidden" id="CollId_article_@a.ArticleId" value="@a.CollId" />
+
+                        <img src="/Home/GetImage/@a.ArticleId" />
+                        <div class="crade">
+                            <div class="nom" id="nom_article_@a.ArticleId">@a.Nom</div>
+                            <div class="colnom" id="col_article_@a.ArticleId">@a.ColNom</div>
+                            <div class="stock">@a.Stock</div>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+
+        }
+    </div>
+    <div class="DroiteUpdate">
+        <input type="hidden" id="guid" value="" />
+        <div class="ligne"><label for="dnom">Nom : </label><input id="dnom" type="text" /></div>
+        <div class="ligne">
+            <label for="ddesc">Descritpif :</label><textarea id="ddesc"></textarea>
+        </div>
+        <div class="ligne">
+            <label>Genre :</label>
+            <select id="genre">
+                @foreach ( var s in Model.ListGenre ) {
+                    <option value="@s.GenreId">@s.Gnom</option>
+                }
+            </select>
+        </div>
+        <div class="ligne">
+            <label>Collection :</label>
+            <select id="collection">
+                @foreach ( var s in Model.ListCollection ) {
+                    <option value="@s.CollectionId">@s.ColNom</option>
+                }
+            </select>
+        </div>
+        <div class="ligne" id="Error"></div>
+        <div class="ligne"><input type="button" value="Sauvegarder" id="sauvegarde" /></div>
+    </div>
+</body>
+</html>
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+<script src="~/Scripts/js.js"></script>

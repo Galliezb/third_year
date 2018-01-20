@@ -5,9 +5,9 @@ document.getElementById("sauvegarder").addEventListener("click", Save);
 
 
 function Save() {
-    console.log("Save cookie");
+    //console.log("Save cookie");
     var value = document.getElementById("contenuCookie").value;
-    console.log("Valeur à sauvegarder => " + value);
+    //console.log("Valeur à sauvegarder => " + value);
     setCookie("test", value, 5 );
 }
 
@@ -36,15 +36,15 @@ function setCookie(NameOfCookie, value, expiredays) {
         ((expiredays == null) ? "" : "; expires=" + ExpireDate.toGMTString());
 }
 
-function delCookie() {
+function delCookie(NameOfCookie) {
     console.log("delete cookie");
-    document.cookie = "test" + "=" +"; expires=Thu, 01-Jan-70 00:00:01 GMT";
+    document.cookie = NameOfCookie + "=" +"; expires=Thu, 01-Jan-70 00:00:01 GMT";
 }
 
-function ReadCookie() {
+function ReadCookie(NameOfCookie) {
     console.log("ReadCookie");
 
-    var value = getCookie("test");
+    var value = getCookie(NameOfCookie);
     console.log("Cookie lu => " + value);
     var element = document.getElementById("contenuCookie");
 

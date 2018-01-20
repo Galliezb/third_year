@@ -18,10 +18,12 @@ namespace modelDansUneVue.Models {
         [StringLength(100, MinimumLength=5, ErrorMessage = "Le Matricule doit avoir entre 5 et 100 caractères" )]
         public string Matricule { get; set; }
         [Required]
-        [RegularExpression( @"^[.*]+\@[.*]+\.[.*]+$", ErrorMessage ="Le champ mail est requis" )]
-        [Remote("CheckUnicity","Home", ErrorMessage ="Ok ?")]
+        //[RegularExpression( @"^[.*]+\@[.*]+\.[.*]+$", ErrorMessage ="Le champ mail est requis" )]
+        [RegularExpression( @"^.*\@.*\..*$" , ErrorMessage ="Le champ mail est requis" )]
+        [Remote("CheckUnicity","Home", ErrorMessage ="Email déjà dans la BDD")]
         public string Email { get; set; }
         [Required]
+        [Display(Name="Date de Naissance")]
         public DateTime DateDeNaissance { get; set; }
     }
 }

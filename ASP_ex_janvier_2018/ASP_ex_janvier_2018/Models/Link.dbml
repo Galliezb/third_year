@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="examenJanvier2018" Class="LinkDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=127.0.0.1\SQLEXPRESS;Initial Catalog=examenJanvier2018;Persist Security Info=True;User ID=labo" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="examenJanvier2018ConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.GetAll" Method="GetAll">
+    <ElementType Name="GetAllResult">
+      <Column Name="ArticleId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="GenreId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="Nom" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descriptif" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Prix" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Stock" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Solde" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ColNom" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Gnom" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.AjaxGetImage" Method="AjaxGetImage">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="AjaxGetImageResult">
+      <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetAllGenre" Method="GetAllGenre">
+    <ElementType Name="GetAllGenreResult">
+      <Column Name="GenreId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Gnom" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetCollection" Method="GetCollection">
+    <ElementType Name="GetCollectionResult">
+      <Column Name="ColNom" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateArticle" Method="UpdateArticle">
+    <Parameter Name="articleid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="genreid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="collectionId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="nom" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="desc" Type="System.String" DbType="Text" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

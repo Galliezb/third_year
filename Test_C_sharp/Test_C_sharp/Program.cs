@@ -1,36 +1,32 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading;
 
-namespace WorkerThread {
+namespace Test_C_sharp {
+
+    delegate void monDelegue ( object a , object b );
+
+
     class Program {
 
-        public delegate bool superDelegue ();
+        static public void Main() {
 
-        static void Main ( string[] args ) {
+            List<Transaction> lcb = new List<Transaction>();
 
-            superDelegue test = new superDelegue( new Class1().Display );
-            int? a = 10;
-            if ( test?.Invoke() ?? false ) {
-                Console.WriteLine( "C'est vrai" );
-            } else {
-                Console.WriteLine( "C'est faux" );
+            lcb.Add( new Transaction(0.0));
+
+            foreach ( int i in lcb[0].Reverse() ) {
+                Console.WriteLine( "" + i );
             }
 
+            Console.WriteLine( "---------------------" );
+
             Console.ReadKey();
-        }
-    }
 
-    class Class1 {
-
-        private static readonly Object o = new Object();
-        static public int a = 0;
-
-
-        public bool Display () {
-            Console.WriteLine( o.GetHashCode() );
-            return true;
         }
 
     }
+
 }

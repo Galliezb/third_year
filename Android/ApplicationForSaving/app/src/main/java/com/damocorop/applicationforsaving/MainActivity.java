@@ -45,11 +45,11 @@ public class MainActivity extends AppCompatActivity {
     // si on fait l'inverse, la sauvegarde sera double :(
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        // ce qui est sauvegardé est justement reçu en paramètre dans le onCreate
-        Log.d("TIMER",Long.toString(lastPressedTime));
-        outState.putLong(LAST_TIME_1,lastPressedTime);
 
+        // ce qui est sauvegardé est justement reçu en paramètre dans le onCreate
+        outState.putLong("nomDeLaVariableQuOnRecuperera",lastPressedTime);
         super.onSaveInstanceState(outState);
+
     }
 
 }

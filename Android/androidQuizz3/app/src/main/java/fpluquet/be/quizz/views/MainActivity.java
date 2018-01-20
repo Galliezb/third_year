@@ -68,51 +68,31 @@ public class MainActivity extends AppCompatActivity {
 
 
         try {
-            Resources res = getResources();
-            InputStream in_s = res.openRawResource(R.raw.questions);
+            // récupère le fichier dans un stream
+            InputStream MonInputStream = getResources().openRawResource(R.raw.questions);
+            // transforme en tableau de byte
+            byte[] b = new byte[MonInputStream.available()];
 
-            byte[] b = new byte[in_s.available()];
-            in_s.read(b);
+            // on retransforme en string
+            MonInputStream.read(b);
             String notreFichier = new String(b);
 
+            // on coupe chaque string à la fin de ligne pour récupérer toutes les lignes
             String[] as = notreFichier.split("\r\n");
 
-            int i =0;
+            int i = 0;
             QuestionModel tmp = new QuestionModel();
+            // ce Toast donnera combien de lignes ont été récupéré ( utile debogage )
             //Toast.makeText(this,"LENGTH => "+as.length,LENGTH_SHORT).show();
-            for (int j = 0; j<as.length; j++){
+            for (int j = 0; j < as.length; j++) {
 
-                //Toast.makeText(this,"-"+as[j]+"-"+as[j].length(),LENGTH_SHORT).show();
-                if ( i == 0 ){
-
-                    tmp.setText(""+as[j]);
-                    i++;
-
-                } else if ( !as[j].isEmpty() ){
-
-                    //Toast.makeText(this,"=> "+as[j],LENGTH_SHORT).show();
-                    tmp.addAnswer(""+as[j]);
-
-                }
-                if ( j == as.length-1 || ( !as[j+1].isEmpty() && as[j].isEmpty() ) ){
-                    //Toast.makeText(this,"["+j+"] ADD QUESTION : " + tmp.getText(),LENGTH_SHORT).show();
-                    i = 0;
-                    questions.add(tmp);
-                    tmp = new QuestionModel();
-
-                }
-//                if ( !as[j+1].isEmpty() && as[j].isEmpty() ){
-//                    Toast.makeText(this,"["+j+"]PUTAIN CA MARCHE " + tmp.getText(),LENGTH_SHORT).show();
-//                }
+                // parcourir toutes les lignes et créer la logique de l'ex
 
             }
-
-        } catch (Exception e) {
-            Toast.makeText(this,e.toString(),LENGTH_LONG);
+        } catch ( Exception e ){
+            Toast.makeText(this,"Erreur de lecture du fichier",LENGTH_SHORT).show();
         }
 
-        // initialize the current question index
-        currentQuestionIndex = -1;
     }
 
     private void launchNextQuestion() {
