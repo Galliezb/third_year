@@ -21,6 +21,7 @@ namespace modelDansUneVue.Controllers
     public class HomeController : Controller
     {
         // GET: Home
+        [OutputCache( VaryByParam = "e" , Duration = 10 )]
         public ActionResult Index( Etudiant e )
         {
             Models.Etudiant ets1 = new Models.Etudiant { Nom = "Dupont", Prenom = "jesaispas", Matricule = "055525896" };
@@ -29,10 +30,17 @@ namespace modelDansUneVue.Controllers
 
         // les filtres => []
         [OutputCache(VaryByParam = "test", Duration = 10)] // cache 10 sec
-        // varyByParam
-        // VaryByCustum
-        // VaryByHeader
-        // Location
+       //     OutputCache Duration = "#ofseconds"
+       //Location="Any | Client | Downstream | Server | None | 
+       //  ServerAndClient "
+       //Shared="True | False"
+       //VaryByControl="controlname"
+       //VaryByCustom="browser | customstring"
+       //VaryByHeader="headers"
+       //VaryByParam="parametername" 
+       //CacheProfile="cache profile name | ''"
+       //NoStore="true | false"
+   //SqlDependency="database/table name pair | CommandNotification"
         // SqlDependency permettra de dévalider la cache par rapport aux datas SQL
         // tester l'affichage client avec un Datetime.now.toLongTimeString();
         // [Authorize] // Permet de définir l'accès qu'aux personnes identifiées
